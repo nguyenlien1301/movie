@@ -1,0 +1,10 @@
+.header__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-web {
+        width: 100px;
+        height: 50px;
+        object-fit: cover;
+    }
+}
