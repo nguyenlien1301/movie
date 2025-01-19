@@ -22,7 +22,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ButtonCustom from "../../components/Button";
 import Textarea from "../../components/Textarea";
-import Textareas from "../../components/Textarea";
+import PersonIcon from "@mui/icons-material/Person";
 
 const ProfilePage = () => {
   const {
@@ -32,6 +32,14 @@ const ProfilePage = () => {
     reset,
     formState: { errors },
   } = useForm();
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    facebook: "",
+    phone: "",
+    username: "",
+    website: "",
+    content: "",
+  });
 
   useEffect(() => {
     const savedInfo = JSON.parse(localStorage.getItem("info")) || {
@@ -43,11 +51,11 @@ const ProfilePage = () => {
       content: "",
     };
     reset(savedInfo);
+    setUserInfo(savedInfo);
   }, [reset]);
 
   // Xử lý khi submit form
   const onSubmit = async (data) => {
-    console.log("🚀data---->", data);
     localStorage.setItem("info", JSON.stringify(data));
     alert("Thông tin đã được cập nhật!");
   };
@@ -73,16 +81,57 @@ const ProfilePage = () => {
           />
           <Divider />
           <Box sx={{ mt: "20px" }}>
-            <Typography variant="h6">Giới thiệu</Typography>
+            <Typography variant="h6" sx={{ fontSize: "2rem" }}>
+              Giới thiệu
+            </Typography>
             <Box sx={{ marginTop: 2 }}>
-              <Typography>
-                <MailOutline /> --
+              <Typography
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  fontSize: "16px",
+                  mb: "10px",
+                }}
+              >
+                <PersonIcon sx={{ width: "3rem", height: "3rem" }} />{" "}
+                {userInfo.username || "--"}
               </Typography>
-              <Typography>
-                <Phone /> --
+              <Typography
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  fontSize: "16px",
+                  mb: "10px",
+                }}
+              >
+                <MailOutline sx={{ width: "3rem", height: "3rem" }} />{" "}
+                {userInfo.email || "--"}
               </Typography>
-              <Typography>
-                <Facebook /> --
+              <Typography
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  fontSize: "16px",
+                  mb: "10px",
+                }}
+              >
+                <Phone sx={{ width: "3rem", height: "3rem" }} />{" "}
+                {userInfo.phone || "--"}
+              </Typography>
+              <Typography
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  fontSize: "16px",
+                  mb: "10px",
+                }}
+              >
+                <Facebook sx={{ width: "3rem", height: "3rem" }} />{" "}
+                {userInfo.facebook || "--"}
               </Typography>
             </Box>
             <Box

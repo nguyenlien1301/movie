@@ -40,6 +40,7 @@ export default [
       "no-extra-boolean-cast": "off",
       "react/no-unknown-property": "off",
       "no-useless-escape": "off",
+      "no-undef": "off",
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, useMediaQuery } from "@mui/material";
-import LoginPage from "./login";
+import LoginPage from "./LoginPage";
 
 const AccountPage = () => {
   const isSmallScreen = useMediaQuery((theme) =>

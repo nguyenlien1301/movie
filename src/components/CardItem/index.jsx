@@ -7,9 +7,8 @@ import { Box, Card, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import getImageUrl from "../../utils/imageUrl";
 import { formatDate, removeVietnameseTones } from "../../utils/format";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PATHS from "../../constants/path";
-import { useSelector } from "react-redux";
 import { CARD_ITEM_TYPE } from "../../constants/general";
 
 const CardItem = ({

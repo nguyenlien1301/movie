@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
-import { Box, Button, Container } from "@mui/material";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React from "react";
+import { Box } from "@mui/material";
+import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -8,7 +8,6 @@ import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import CustomEmpty from "../../components/ComponentEmpty";
 import { getMediaImageUrl } from "../../utils/imageUrl";
 import { CustomSwiper } from "../../components/CustomStyleds";
-import { Skeleton } from "antd";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { removeVietnameseTones } from "../../utils/format";
