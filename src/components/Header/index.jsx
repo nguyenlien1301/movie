@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 import HeaderLogo from "./HeaderLogo";
 import HeaderSearch from "./HeaderSearch";
 import HeaderAuthen from "./HeaderAuthen";
-import { Link as RouterLink } from "react-router-dom";
 import PATHS from "../../constants/path";
 import ModeSelect from "../ModeSelect";
 import HeaderHambuger from "./HeaderHambuger";
@@ -78,6 +77,7 @@ function Header() {
             </ButtonCustom>
           )} */}
           {/* {!!tokenMethod.get() && <HeaderAuthen />} */}
+          <ModeSelect />
           <HeaderAuthen />
         </Box>
       </Toolbar>
