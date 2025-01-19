@@ -14,7 +14,7 @@ const HeaderLogo = () => {
       >
         <Typography
           sx={{
-            fontSize: "3rem",
+            fontSize: { mobileXs: "2rem", tabletXs: "3rem" },
             fontWeight: "900",
             color: "#FF5733",
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",

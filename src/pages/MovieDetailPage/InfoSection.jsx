@@ -378,6 +378,7 @@ const InfoSection = ({
                   width: "fit-content",
                   color: "var(--white)",
                   fontSize: "var(--fz-text)",
+                  px: "20px",
                 }}
                 variant="contained"
                 startIcon={<PlayCircleIcon />}

@@ -35,7 +35,10 @@ const BreadcrumbItem = ({ children, isActive = false, isBack = false }) => {
   }
   if (isActive) {
     return (
-      <Typography color="text.primary" sx={{ fontSize: "18px" }}>
+      <Typography
+        color="text.primary"
+        sx={{ fontSize: { mobileXs: "1.5rem", tabletXs: "1.8rem" } }}
+      >
         {children}
       </Typography>
     );
@@ -45,7 +48,7 @@ const BreadcrumbItem = ({ children, isActive = false, isBack = false }) => {
     <Typography
       sx={{
         a: {
-          fontSize: "18px",
+          fontSize: { mobileXs: "1.5rem", tabletXs: "1.8rem" },
           color: "rgba(255, 255, 255, 0.7)",
           transition: "all 0.3s",
           ":hover": { color: "#fcb941" },

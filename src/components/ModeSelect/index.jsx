@@ -25,7 +25,7 @@ const ModeSelect = () => {
         p: { mobileXs: "4px 5px", mobileSm: "7px 8px", desktopSm: "9px 10px" },
       }}
     >
-      {mode === "light" ? <LightModeIcon /> : <DarkModeIcon />}
+      {/* {mode === "light" ? <LightModeIcon /> : <DarkModeIcon />} */}
     </Button>
   );
 };

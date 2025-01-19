@@ -19,23 +19,14 @@ const PopupVideos = ({ title, backdrop_path }) => {
   };
 
   return (
-    <Box
-      className="Box"
-      sx={{ backgroundColor: "white", width: "100%", height: "100%" }}
-    >
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        disableScrollLock
-        maxWidth="md"
-        fullWidth
-      >
+    <Box sx={{ backgroundColor: "white", width: "100%", height: "100%" }}>
+      <Dialog open={open} onClose={handleClose} disableScrollLock fullWidth>
         <DialogContent
           sx={{
             position: "relative",
             backgroundColor: "white",
             padding: "50px 10px 10px 10px",
-            aspectRatio: "16 / 9",
+            aspectRatio: { mobileSm: "16 / 9" },
           }}
         >
           {title && (
@@ -62,7 +53,16 @@ const PopupVideos = ({ title, backdrop_path }) => {
               zIndex: 1, // Đảm bảo nút hiển thị trên các thành phần khác
             }}
           >
-            <CloseIcon />
+            <CloseIcon
+              sx={{
+                fontSize: "2.5rem",
+                color: "var(--blue-light)",
+                transition: "var(--transtion)",
+                ":hover": {
+                  color: "#fcb941",
+                },
+              }}
+            />
           </IconButton>
           {videoKey && (
             <ReactPlayer

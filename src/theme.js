@@ -24,30 +24,30 @@ const theme = createTheme({
   //   },
   // },
   colorSchemes: {
-    light: {
-      palette: {
-        common: {
-          color: "black",
-          background: "white",
-        },
-      },
-      borderColorCustom: {
-        borderColor: "black",
-        border: "#2979ff",
-      },
-      backgroundCustom: {
-        background: "black",
-        backgroundMuiPaper: {
-          background: "white",
-        },
-      },
-      bgFooter: {
-        background: "black",
-      },
-      colors: {
-        color: "var(--blue-light)",
-      },
-    },
+    // light: {
+    //   palette: {
+    //     common: {
+    //       color: "black",
+    //       background: "white",
+    //     },
+    //   },
+    //   borderColorCustom: {
+    //     borderColor: "black",
+    //     border: "#2979ff",
+    //   },
+    //   backgroundCustom: {
+    //     background: "black",
+    //     backgroundMuiPaper: {
+    //       background: "white",
+    //     },
+    //   },
+    //   bgFooter: {
+    //     background: "black",
+    //   },
+    //   colors: {
+    //     color: "var(--blue-light)",
+    //   },
+    // },
     dark: {
       palette: {
         common: {
@@ -86,7 +86,7 @@ const theme = createTheme({
           scrollSnapType: "y mandatory",
         },
         body: {
-          backgroundColor: theme.palette.mode === "dark" ? "#000" : "#fff",
+          // backgroundColor: theme.palette.mode === "dark" ? "#000" : "#fff",
           color: theme.palette.mode === "dark" ? "#fff" : "#000",
           transition: "background-color 0.3s, color 0.3s",
           // overscrollBehavior: "none",
