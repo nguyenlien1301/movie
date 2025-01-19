@@ -14,7 +14,6 @@ const ScrollTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollYTop = window.scrollY;
       if (window.scrollY > 300) {
         refBackToTop.current.style.opacity = "1";
       } else {
@@ -38,12 +37,10 @@ const ScrollTop = () => {
         borderRadius: "50%",
         "& .MuiButtonBase-root": {
           border: "2px solid transparent",
-          // backgroundColor: "#2979ff",
           backgroundColor: "var(--blue-light)",
         },
         ":hover .MuiButtonBase-root": {
           background: "transparent",
-          // border: "2px solid #2979ff",
           border: "2px solid var(--blue-light)",
         },
       }}

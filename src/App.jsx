@@ -6,7 +6,7 @@ import RouterWrapper from "./components/RouterWrapper";
 const MainLayout = lazy(() => import("./layout/MainLayout"));
 const UpcomingPage = lazy(() => import("./pages/UpcomingPage"));
 const HomePage = lazy(() => import("./pages/HomePage"));
-const LoginPage = lazy(() => import("./pages/AccountPage"));
+// const LoginPage = lazy(() => import("./pages/AccountPage"));
 const NowPlayingPage = lazy(() => import("./pages/NowPlayingPage"));
 const PopularPage = lazy(() => import("./pages/PopularPage"));
 const TopRatedPage = lazy(() => import("./pages/TopRatedPage"));
@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route path={PATHS.HOME} element={<MainLayout />}>
             <Route index element={<HomePage />} />
-            <Route path={PATHS.ACCOUNT} element={<LoginPage />} />
+            {/* <Route path={PATHS.ACCOUNT} element={<LoginPage />} /> */}
             <Route
               path={PATHS.MOVIES.NOW_PLAYING}
               element={<NowPlayingPage />}

@@ -5,7 +5,7 @@ import topRatedReducer from "./reducer/topRatedReducer";
 import upcomingReducer from "./reducer/upcomingReducer";
 import videoPopupReducer from "./reducer/videoPopupReducer";
 import searchReducer from "./reducer/searchReducer";
-import authReducer from "./reducer/authReducer";
+// import authReducer from "./reducer/authReducer";
 import airingTodayTvReducer from "./reducer/airingTodayTvReducer";
 import onTheAirTvReducer from "./reducer/onTheAirTvReducer";
 import popularTvReducer from "./reducer/popularTvReducer";
@@ -20,7 +20,7 @@ export const store = configureStore({
     upcoming: upcomingReducer,
     videoPopup: videoPopupReducer,
     search: searchReducer,
-    auth: authReducer,
+    // auth: authReducer,
     airingToDay: airingTodayTvReducer,
     onTheAirTv: onTheAirTvReducer,
     popularTv: popularTvReducer,

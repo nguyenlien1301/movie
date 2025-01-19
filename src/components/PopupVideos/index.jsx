@@ -35,6 +35,7 @@ const PopupVideos = ({ title, backdrop_path }) => {
             position: "relative",
             backgroundColor: "white",
             padding: "50px 10px 10px 10px",
+            aspectRatio: "16 / 9",
           }}
         >
           {title && (
@@ -64,17 +65,14 @@ const PopupVideos = ({ title, backdrop_path }) => {
             <CloseIcon />
           </IconButton>
           {videoKey && (
-            <Box>
-              <ReactPlayer
-                width="100%"
-                height="100%"
-                style={{ aspectRatio: "16 / 9" }}
-                url={`https://www.youtube.com/embed/${videoKey}`}
-                poster={getImageUrl(backdrop_path)}
-                controls
-                playing
-              />
-            </Box>
+            <ReactPlayer
+              width="100%"
+              height="100%"
+              url={`https://www.youtube.com/embed/${videoKey}`}
+              poster={getImageUrl(backdrop_path)}
+              controls
+              playing
+            />
           )}
         </DialogContent>
       </Dialog>

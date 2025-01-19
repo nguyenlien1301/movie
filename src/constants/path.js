@@ -1,5 +1,5 @@
 const MOVIES_PATH = "/movies";
-const TV_SERIES_PATH = "/tv_series";
+const TV_SERIES_PATH = "/tv-series";
 const TRENDING_PATH = "/trending";
 
 const PATHS = {
@@ -7,28 +7,28 @@ const PATHS = {
   ACCOUNT: "/login",
   SEARCH: "/search",
   MOVIES: {
-    NOW_PLAYING: MOVIES_PATH + "/now_playing",
+    NOW_PLAYING: MOVIES_PATH + "/now-playing",
     POPULAR: MOVIES_PATH + "/popular",
-    TOP_RATED: MOVIES_PATH + "/top_rated",
+    TOP_RATED: MOVIES_PATH + "/top-rated",
     UPCOMING: MOVIES_PATH + "/upcoming",
   },
   TV_SERIES: {
-    AIRING_TODAY: TV_SERIES_PATH + "/airing_today",
-    ON_THE_AIR: TV_SERIES_PATH + "/on_the_air",
+    AIRING_TODAY: TV_SERIES_PATH + "/airing-today",
+    ON_THE_AIR: TV_SERIES_PATH + "/on-tv",
     POPULAR: TV_SERIES_PATH + "/popular",
-    TOP_RATED: TV_SERIES_PATH + "/top_rated",
+    TOP_RATED: TV_SERIES_PATH + "/top-rated",
   },
   MOVIE_DETAIL: {
-    INDEX: "/movie",
-    DETAIL: "/movie" + "/:movie_id" + "/:nameSlug",
+    INDEX: "/movies",
+    DETAIL: "/movies" + "/:movie_id" + "/:nameSlug",
   },
   TV_SERIES_DETAIL: {
     INDEX: "/series",
     DETAIL: "/series" + "/:series_id" + "/:nameSlug",
   },
   GENRES: {
-    MOVIE: MOVIES_PATH + "/genres_movie_list",
-    TV: TV_SERIES_PATH + "/genres_tv_list",
+    MOVIE: MOVIES_PATH + "/genres-movies",
+    TV: TV_SERIES_PATH + "/genres-tv",
   },
   TRENDING: {
     INDEX: TRENDING_PATH,

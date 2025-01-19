@@ -56,7 +56,7 @@ function Header() {
         >
           <HeaderSearch />
           {/* <ModeSelect /> */}
-          {!tokenMethod.get() && (
+          {/* {!tokenMethod.get() && (
             <ButtonCustom
               component={RouterLink}
               to={PATHS.ACCOUNT}
@@ -76,8 +76,9 @@ function Header() {
             >
               Login
             </ButtonCustom>
-          )}
-          {!!tokenMethod.get() && <HeaderAuthen />}
+          )} */}
+          {/* {!!tokenMethod.get() && <HeaderAuthen />} */}
+          <HeaderAuthen />
         </Box>
       </Toolbar>
     </AppBar>

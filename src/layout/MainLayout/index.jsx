@@ -3,7 +3,6 @@ import Header from "../../components/Header";
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../../components/Footer";
 import ScrollTop from "../../components/ScrollTop";
-import ScrollProgressBar from "../../components/ScrollProgressBar";
 
 const MainLayout = () => {
   const { pathname } = useLocation();
@@ -16,7 +15,6 @@ const MainLayout = () => {
   }, [pathname]);
   return (
     <>
-      <ScrollProgressBar />
       <Header />
       <Outlet />
       <Footer />
