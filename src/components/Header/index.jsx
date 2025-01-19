@@ -77,7 +77,7 @@ function Header() {
             </ButtonCustom>
           )} */}
           {/* {!!tokenMethod.get() && <HeaderAuthen />} */}
-          <ModeSelect />
+          {/* <ModeSelect /> */}
           <HeaderAuthen />
         </Box>
       </Toolbar>
