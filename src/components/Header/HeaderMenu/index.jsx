@@ -20,7 +20,7 @@ const HeaderMenu = () => {
     >
       <Box component="ul" sx={MENU_ITEM_STYLES}>
         <Box component="li">
-          <Link to={PATHS.HOME}>Trang chủ</Link>
+          <Link to={PATHS.HOME}>Home</Link>
         </Box>
       </Box>
       <MovieMenu />
@@ -28,7 +28,7 @@ const HeaderMenu = () => {
       <GenresMenu />
       <Box component="ul" sx={MENU_ITEM_STYLES}>
         <Box component="li">
-          <Link to={PATHS.TRENDING.INDEX}>Xu hướng</Link>
+          <Link to={PATHS.TRENDING.INDEX}>Trending</Link>
         </Box>
       </Box>
     </Box>

@@ -1,63 +1,44 @@
-import { Box, Container, Tab } from "@mui/material";
-import Tabs, { tabsClasses } from "@mui/material/Tabs";
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { handleChange, handleGenres } from "../../store/reducer/genresReducer";
-import EachGenres from "./EachGenres";
-import AllGenres from "./AllRenres";
-import TabsItem from "../../components/TabsItem";
-import useDebounce from "../../hooks/useDebounce";
+import { Box, Container } from "@mui/material";
+import { Link } from "react-router-dom";
+import useGenrePage from "./useGenrePage";
+import MuiPagination from "../../components/Pagination";
+import MoviesList from "./MoviesList";
+import MoviesFilter from "./MoviesFilter";
+import Breadcrumb from "../../components/Breadcrumb";
+import PATHS from "../../constants/path";
 
 const GenresMoviePage = () => {
-  const {
-    value,
-    filterGenres,
-    loading: movieLoading,
-  } = useSelector((state) => state.genres);
-  const dispatch = useDispatch();
-  const handleChangeValue = (e, newValue) => {
-    dispatch(handleChange(newValue));
-    if (newValue === 0) {
-      dispatch(handleGenres()); // Lấy tất cả phim nếu chọn tab "All"
-    }
-  };
-  const tabMovies = filterGenres.find((item) => {
-    return item?.id === value;
-  });
-  useEffect(() => {
-    dispatch(handleGenres());
-  }, []);
-  const loading = useDebounce(
-    movieLoading.loadingGenres || movieLoading.loadingFilterGenres,
-    300
-  );
+  const { moviesListProps, paginationProps, filterProps } = useGenrePage();
+
   return (
     <Box
       sx={{
-        pt: (theme) => theme.header.heightHeader,
-        bgcolor: (theme) => theme.palette.common,
-        height: "auto",
+        pt: (theme) => `calc(${theme.header.heightHeader} + var(--pt))`,
       }}
     >
-      <TabsItem
-        value={value}
-        handleChangeValue={handleChangeValue}
-        filterGenres={filterGenres}
-        loading={loading}
-      />
       <Container maxWidth="xl">
-        {value !== 0 ? (
-          <EachGenres
-            {...tabMovies}
-            loading={loading}
-            handleChangeValue={handleChangeValue}
-          />
-        ) : (
-          <AllGenres filterGenres={filterGenres} loading={loading} />
-        )}
+        <Breadcrumb>
+          <Breadcrumb.Item>
+            <Link to={PATHS.HOME}>Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item isActive>Product</Breadcrumb.Item>
+        </Breadcrumb>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: { mobileXs: "column", mobileLg: "row" },
+            gap: 3,
+            mt: "15px",
+          }}
+        >
+          <MoviesFilter {...filterProps} />
+          <Box sx={{ flex: 4 }}>
+            <MoviesList {...moviesListProps} />
+            <MuiPagination {...paginationProps}></MuiPagination>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
 };
-
 export default GenresMoviePage;

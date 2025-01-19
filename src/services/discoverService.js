@@ -1,11 +1,11 @@
 import axiosInstance from "../utils/axiosInstance";
 
 const discoverService = {
-  getDiscoverMovie(ids) {
-    return axiosInstance.get(`/discover/movie?with_genres=${ids}`);
+  getDiscoverMovie(query = "") {
+    return axiosInstance.get(`/discover/movie${query}`);
   },
-  getDiscoverTvSeries(ids) {
-    return axiosInstance.get(`/discover/tv?with_genres=${ids}`);
+  getDiscoverTvSeries(query = "") {
+    return axiosInstance.get(`/discover/tv${query}`);
   },
 };
 export default discoverService;

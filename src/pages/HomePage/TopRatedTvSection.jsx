@@ -25,7 +25,7 @@ const TopRatedTvSection = () => {
   return (
     <ContainerComponent>
       <MovieTitleItem link={PATHS.TV_SERIES.TOP_RATED}>
-        Phim truyền hình được đánh giá cao
+        Top Rated TV Series
       </MovieTitleItem>
       <Box mt="15px">
         {loading ? (

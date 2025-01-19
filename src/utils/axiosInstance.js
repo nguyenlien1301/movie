@@ -37,7 +37,7 @@ axiosInstance.interceptors.request.use(
   (config) => {
     // Xử lí yêu cầu trước khi gửi đi
     // config.params: là thuộc tính của axios. Nó chứa các tham số truy vấn (query parameters) sẽ được tự động thêm vào URL của request.
-    config.params = { language: "vi-VN", api_key: API_KEY, ...config.params };
+    config.params = { api_key: API_KEY, ...config.params };
     config.headers = { "Content-Type": "application/json" };
     return config;
   },

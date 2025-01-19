@@ -14,6 +14,7 @@ const CardPosterItem = ({
   media_type,
   title,
   name,
+  ...rest
 }) => {
   const movieSlug = removeVietnameseTones(title);
   const tvSlug = removeVietnameseTones(name);
@@ -25,7 +26,7 @@ const CardPosterItem = ({
       <Grid
         item
         size={{
-          desktopSm: 2,
+          // desktopSm: 2,
           tabletSm: 3,
           mobileLg: 6,
           mobileXs: 12,
@@ -33,6 +34,7 @@ const CardPosterItem = ({
           smallDevice: 6,
           largeDevice: 2.4,
         }}
+        {...rest}
       >
         <ImageList
           sx={{
@@ -79,7 +81,7 @@ const CardPosterItem = ({
     <Grid
       item
       size={{
-        desktopSm: 2,
+        // desktopSm: 2,
         tabletSm: 3,
         mobileLg: 6,
         mobileXs: 12,
@@ -87,6 +89,7 @@ const CardPosterItem = ({
         smallDevice: 6,
         largeDevice: 2.4,
       }}
+      {...rest}
     >
       <ImageList
         sx={{

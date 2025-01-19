@@ -3,7 +3,7 @@ import VideosSection from "../MovieDetailPage/VideosSection";
 import CastsSection from "../MovieDetailPage/CastsSection";
 import SimilarSection from "../MovieDetailPage/SimilarSection";
 import { Box } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import useMutation from "../../hooks/useMutation";
 import TvSeriesDetailService from "../../services/tvSeriesDetailSevice";
 import { formatDate } from "../../utils/format";
@@ -12,6 +12,7 @@ import { handleGetVideosTvSeries } from "../../store/reducer/videoPopupReducer";
 import { useDispatch, useSelector } from "react-redux";
 import useQuery from "../../hooks/useQuery";
 import useDebounce from "../../hooks/useDebounce";
+import Breadcrumb from "../../components/Breadcrumb";
 
 const TvSeriesDetailPage = () => {
   const params = useParams();
@@ -72,7 +73,7 @@ const TvSeriesDetailPage = () => {
       <InfoTvSeriesSection
         {...modifiedTvSeriesInfo}
         keyFirst={keyFirst}
-        loading={loadingIntro}
+        loading={!loadingIntro}
       />
       <VideosSection videos={video} loading={loading} title={name} />
       <CastsSection casts={casts} loading={castsLoading} />

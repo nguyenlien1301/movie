@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid2";
 import { Facebook, Phone, MailOutline } from "@mui/icons-material";
 import Input from "../../components/Input";
 import { useForm } from "react-hook-form";
-import { MESSAGE } from "../../constants/validate";
+import { MESSAGE, REGEX } from "../../constants/validate";
 import ShareLink from "../../components/ShareLink";
 import { BUTTON_CUSTOM_TYLES } from "../../components/CustomStyleds";
 import { PATH_URL } from "../../constants/pathurl";
@@ -21,23 +21,35 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ButtonCustom from "../../components/Button";
+import Textarea from "../../components/Textarea";
+import Textareas from "../../components/Textarea";
 
 const ProfilePage = () => {
   const {
     register,
     handleSubmit,
+    setValue,
+    reset,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+    const savedInfo = JSON.parse(localStorage.getItem("info")) || {
+      email: "",
+      facebook: "",
+      phone: "",
+      username: "",
+      website: "",
+      content: "",
+    };
+    reset(savedInfo);
+  }, [reset]);
+
+  // Xử lý khi submit form
   const onSubmit = async (data) => {
     console.log("🚀data---->", data);
-    // if (data) {
-    //   try {
-    //     const res = await dispatch(handleLogin(data));
-    //     navigate(PATHS.HOME);
-    //   } catch (error) {
-    //     console.log("🚀error---->", error);
-    //   }
-    // }
+    localStorage.setItem("info", JSON.stringify(data));
+    alert("Thông tin đã được cập nhật!");
   };
   return (
     <Box
@@ -135,24 +147,30 @@ const ProfilePage = () => {
                   label="Số điện thoại"
                   requird
                   fullWidth
-                  //   disabled={disabled}
                   placeholder="Số điện thoại"
                   {...register("phone", {
                     required: MESSAGE.required,
+                    pattern: {
+                      value: REGEX.phone,
+                      message: MESSAGE.phone,
+                    },
                   })}
-                  error={errors?.username?.message || ""}
+                  error={errors?.phone?.message || ""}
                 />
               </Grid>
               <Grid item size={{ mobileXs: 12, tabletSm: 6 }}>
                 <Input
                   label="Email"
                   fullWidth
-                  //   disabled={disabled}
                   placeholder="Email"
                   {...register("email", {
                     required: MESSAGE.required,
+                    pattern: {
+                      value: REGEX.email,
+                      message: MESSAGE.email,
+                    },
                   })}
-                  error={errors?.username?.message || ""}
+                  error={errors?.email?.message || ""}
                 />
               </Grid>
               <Grid item size={{ mobileXs: 12, tabletSm: 6 }}>
@@ -160,57 +178,41 @@ const ProfilePage = () => {
                   label="Mật khẩu"
                   fullWidth
                   type="password"
-                  //   disabled={disabled}
+                  value="***********"
+                  disabled
                   placeholder="Mật khẩu"
-                  {...register("password", {
-                    required: MESSAGE.required,
-                  })}
-                  error={errors?.username?.message || ""}
                 />
               </Grid>
               <Grid item size={{ mobileXs: 12 }}>
                 <Input
                   label="Facebook"
                   fullWidth
-                  //   disabled={disabled}
                   placeholder="Facebook"
-                  {...register("facebook", {
-                    required: MESSAGE.required,
-                  })}
-                  error={errors?.username?.message || ""}
+                  {...register("facebook")}
                 />
               </Grid>
               <Grid item size={{ mobileXs: 12 }}>
                 <Input
                   label="Website"
                   fullWidth
-                  //   disabled={disabled}
                   placeholder="Website"
-                  {...register("website", {
-                    required: MESSAGE.required,
-                  })}
-                  error={errors?.username?.message || ""}
+                  {...register("website")}
                 />
               </Grid>
               <Grid item size={{ mobileXs: 12 }}>
                 <Input
-                  label="Giới thiệu bản thân"
+                  label="Content"
                   fullWidth
-                  //   disabled={disabled}
-                  placeholder="Website"
-                  {...register("website", {
-                    required: MESSAGE.required,
-                  })}
-                  error={errors?.username?.message || ""}
+                  placeholder="Content"
+                  {...register("content")}
+                  renderInput={(inputProps) => {
+                    return <Textarea {...inputProps} />;
+                  }}
                 />
               </Grid>
               <Grid item size={{ mobileXs: 12 }} sx={{ textAlign: "center" }}>
                 <ButtonCustom
-                  // sx={{ width: "fit-content", margin: "0 auto" }}
-                  // sx={{
-                  //   padding: { mobileXs: "8px 16px", mobileSm: "10px 16px" },
-                  // }}
-                  onClick={onSubmit}
+                  onClick={handleSubmit(onSubmit)}
                   variant="contained"
                   color="primary"
                   fullWidth

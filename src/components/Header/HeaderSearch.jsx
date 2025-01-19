@@ -44,7 +44,8 @@ const HeaderSearch = () => {
           mobileSm: "150px",
           mobileMd: "220px",
           mobileXl: "300px",
-          tabletMd: "150px",
+          tabletMd: "260px",
+          desktopSm: "400px",
         },
         border: (theme) => `1px solid ${theme.borderColorCustom.border}`,
         borderRadius: "100px",
@@ -69,11 +70,21 @@ const HeaderSearch = () => {
             fontSize: { mobileXs: "10px", desktopSm: "16px" },
           },
         }}
-        placeholder="Tìm kiếm..."
+        placeholder="Search..."
         inputProps={{ "aria-label": "search" }}
         value={searchQuery}
         onChange={onSearchChange}
       />
+      {searchQuery && (
+        <ClearIcon
+          onClick={() => dispatch(listentValueChange(""))}
+          sx={{
+            cursor: "pointer",
+            color: "var(--blue-light)",
+            fontSize: "2rem",
+          }}
+        />
+      )}
       <IconButton
         type="submit"
         sx={{
@@ -89,12 +100,6 @@ const HeaderSearch = () => {
       >
         <SearchIcon />
       </IconButton>
-      {searchQuery && (
-        <ClearIcon
-          onClick={() => dispatch(listentValueChange(""))}
-          sx={{ cursor: "pointer" }}
-        />
-      )}
     </Paper>
   );
 };

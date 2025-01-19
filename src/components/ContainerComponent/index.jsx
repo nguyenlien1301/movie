@@ -4,7 +4,9 @@ import React from "react";
 const ContainerComponent = ({ children, ...rest }) => {
   return (
     <Box pt="var(--pt-section)" {...rest}>
-      <Container maxWidth="xl">{children}</Container>
+      <Container maxWidth="xl" {...rest}>
+        {children}
+      </Container>
     </Box>
   );
 };

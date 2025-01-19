@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PATHS from "./constants/path";
 import { lazy, Suspense } from "react";
 import ComponentLoading from "./components/ComponentLoading";
+import RouterWrapper from "./components/RouterWrapper";
 const MainLayout = lazy(() => import("./layout/MainLayout"));
 const UpcomingPage = lazy(() => import("./pages/UpcomingPage"));
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -17,23 +18,15 @@ const OnTheAirTvPage = lazy(() => import("./pages/OnTheAirTvPage"));
 const PopularTvPage = lazy(() => import("./pages/PopularTvPage"));
 const TopRatedTvPage = lazy(() => import("./pages/TopRatedTvPage"));
 const TvSeriesDetailPage = lazy(() => import("./pages/TvSeriesDetailPage"));
-const GenresTvSeriesPage = lazy(() => import("./pages/GenresTvSeriesPage"));
 const TrendingPage = lazy(() => import("./pages/TrendingPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const GenresMovieTvPage = lazy(() => import("./pages/GenresMovieTvPage"));
 
 function App() {
-  // const location = useLocation();
-  // const spinStyle = {
-  //   display: "flex",
-  //   justifyContent: "center",
-  //   alignItems: "center",
-  //   height: "100vh",
-
-  // };
-
   return (
     <Suspense fallback={<ComponentLoading />}>
       <BrowserRouter>
+        <RouterWrapper />
         <Routes>
           <Route path={PATHS.HOME} element={<MainLayout />}>
             <Route index element={<HomePage />} />
@@ -68,7 +61,7 @@ function App() {
             />
             <Route path={PATHS.SEARCH} element={<SearchResultsPage />} />
             <Route path={PATHS.GENRES.MOVIE} element={<GenresMoviePage />} />
-            <Route path={PATHS.GENRES.TV} element={<GenresTvSeriesPage />} />
+            <Route path={PATHS.GENRES.TV} element={<GenresMovieTvPage />} />
             <Route path={PATHS.TRENDING.INDEX} element={<TrendingPage />} />
             <Route path={PATHS.PROFILE} element={<ProfilePage />} />
           </Route>

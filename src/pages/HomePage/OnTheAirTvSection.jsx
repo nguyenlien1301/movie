@@ -24,7 +24,7 @@ const OnTheAirTvSection = () => {
   return (
     <ContainerComponent>
       <MovieTitleItem link={PATHS.TV_SERIES.ON_THE_AIR}>
-        Phim truyền hình đang phát sóng
+        Broadcast TV Series
       </MovieTitleItem>
       <Box mt="15px">
         {loading ? (

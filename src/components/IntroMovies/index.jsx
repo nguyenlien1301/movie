@@ -10,6 +10,9 @@ import { getMediaImageUrl } from "../../utils/imageUrl";
 import { CustomSwiper } from "../../components/CustomStyleds";
 import { Skeleton } from "antd";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { removeVietnameseTones } from "../../utils/format";
+import PATHS from "../../constants/path";
 
 export const SkeletonImageStyle = styled.div`
   .ant-skeleton {
@@ -30,6 +33,7 @@ export const SkeletonImageStyle = styled.div`
 `;
 
 const IntroMovies = ({ movies, loading }) => {
+  console.log("🚀movies---->", movies);
   return (
     <Box
       sx={{
@@ -64,36 +68,46 @@ const IntroMovies = ({ movies, loading }) => {
       >
         {loading ? (
           <SkeletonImageStyle>
-            <Skeleton.Image active style={{ width: "100%", height: 250 }} />
+            {/* <Skeleton.Image active style={{ width: "100%", height: 250 }} /> */}
           </SkeletonImageStyle>
         ) : movies?.length > 0 ? (
-          movies?.map((movie, index) => (
-            <SwiperSlide key={movie?.id || index}>
-              <Box
-                sx={{
-                  position: "relative",
-                  width: "100%",
-                  height: (theme) =>
-                    `calc(100vh - ${theme.header.heightHeader})`,
-                  overflow: "hidden",
-                }}
-              >
+          movies?.map((movie, index) => {
+            const movieSlug = removeVietnameseTones(movie?.title);
+            const tvSlug = removeVietnameseTones(name);
+            const moviePath =
+              PATHS.MOVIE_DETAIL.INDEX + `/${movie?.id}/${movieSlug}`;
+            const tvPath =
+              PATHS.TV_SERIES_DETAIL.INDEX + `/${movie?.id}/${tvSlug}`;
+            return (
+              <SwiperSlide key={movie?.id || index}>
                 <Box
-                  component="img"
-                  srcSet={getMediaImageUrl(movie?.backdrop_path)}
-                  width="100%"
-                  height="100%"
                   sx={{
-                    objectFit: "cover",
-                    position: "absolute",
-                    top: "50%",
-                    left: "50%",
-                    transform: "translate(-50%, -50%)",
+                    position: "relative",
+                    width: "100%",
+                    height: (theme) =>
+                      `calc(100vh - ${theme.header.heightHeader})`,
+                    overflow: "hidden",
                   }}
-                />
-              </Box>
-            </SwiperSlide>
-          ))
+                >
+                  <Link to={moviePath || tvPath}>
+                    <Box
+                      component="img"
+                      srcSet={getMediaImageUrl(movie?.backdrop_path)}
+                      width="100%"
+                      height="100%"
+                      sx={{
+                        objectFit: "cover",
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                      }}
+                    />
+                  </Link>
+                </Box>
+              </SwiperSlide>
+            );
+          })
         ) : (
           loading && <CustomEmpty description="Không tìm thấy hình ảnh nào" />
         )}

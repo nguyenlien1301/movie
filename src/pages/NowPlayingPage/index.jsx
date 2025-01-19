@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CustomEmpty from "../../components/ComponentEmpty";
 import Grid from "@mui/material/Grid2";
@@ -12,9 +12,10 @@ import InfiniteScrollComponent from "../../components/InfiniteScrollComponent";
 import useDebounce from "../../hooks/useDebounce";
 import ArrayFromComponent from "../../components/ArrayFromComponent";
 import TypographyTitle from "../../components/TypographyTitle";
-import IntroMovies from "../../components/IntroMovies";
-import movieSlice from "../../utils/movieSlice";
 import ContainerComponent from "../../components/ContainerComponent";
+import Breadcrumb from "../../components/Breadcrumb";
+import { Link } from "react-router-dom";
+import PATHS from "../../constants/path";
 
 const NowPlayingPage = () => {
   const dispatch = useDispatch();
@@ -38,36 +39,37 @@ const NowPlayingPage = () => {
     }
   };
   const loading = useDebounce(nowPlayingLoading, 300);
-  const introNowPlaying = movieSlice(movies);
   return (
-    <>
-      <IntroMovies movies={introNowPlaying} loading={loading} />
-      <ContainerComponent
-        sx={{
-          bgcolor: (theme) => theme.palette.common,
-          height: "auto",
-        }}
+    <ContainerComponent
+      sx={{
+        pt: "var(--h-header)",
+      }}
+    >
+      <Breadcrumb>
+        <Breadcrumb.Item>
+          <Link to={PATHS.HOME}>Home</Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item isActive>NowPlaying Movies</Breadcrumb.Item>
+      </Breadcrumb>
+      <TypographyTitle textAlign="center">NowPlaying Movies</TypographyTitle>
+      <InfiniteScrollComponent
+        dataLength={movies.length}
+        next={fetchMore}
+        hasMore={hasMore}
       >
-        <TypographyTitle>Phim đang chiếu</TypographyTitle>
-        <InfiniteScrollComponent
-          dataLength={movies.length}
-          next={fetchMore}
-          hasMore={hasMore}
-        >
-          <Grid container spacing={2}>
-            {loading ? (
-              <ArrayFromComponent />
-            ) : movies.length > 0 ? (
-              movies?.map((movie, index) => {
-                return <CardItem key={`${movie.id}-${index}`} {...movie} />;
-              })
-            ) : (
-              <CustomEmpty description="Không tìm thấy hình ảnh nào" />
-            )}
-          </Grid>
-        </InfiniteScrollComponent>
-      </ContainerComponent>
-    </>
+        <Grid container spacing={2}>
+          {loading ? (
+            <ArrayFromComponent />
+          ) : movies.length > 0 ? (
+            movies?.map((movie, index) => {
+              return <CardItem key={`${movie.id}-${index}`} {...movie} />;
+            })
+          ) : (
+            <CustomEmpty description="Không tìm thấy hình ảnh nào" />
+          )}
+        </Grid>
+      </InfiniteScrollComponent>
+    </ContainerComponent>
   );
 };
 export default NowPlayingPage;

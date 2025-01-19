@@ -5,22 +5,23 @@ const useMutation = (promise) => {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const execute = async (paload) => {
-    setLoading(true);
     try {
+      setLoading(true);
       const res = await promise(paload);
       if (res?.data) {
         setData(res.data);
       }
     } catch (error) {
-      console.log("🚀error---->", error);
       setError(error);
+    } finally {
+      setLoading(false);
     }
   };
   return {
+    execute,
     data,
     error,
     loading,
-    execute,
   };
 };
 

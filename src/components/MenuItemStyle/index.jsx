@@ -13,14 +13,14 @@ export const MENU_ITEM_STYLES = {
     listStyleType: "none",
     transition: "var(--transtion)",
     "&:hover": {
-      color: "#ff3d00",
+      color: "rgb(252, 185, 65)",
     },
     a: {
       textDecoration: "none",
       color: (theme) => theme.palette.common.color,
       transition: "var(--transtion)",
       "&:hover": {
-        color: "#ff3d00",
+        color: "rgb(252, 185, 65)",
       },
     },
   },
@@ -34,6 +34,8 @@ export const MENU_ITEM_STYLES = {
     borderBottomRightRadius: "5px",
     borderBottomLeftRadius: "5px",
     paddingLeft: 0,
+    minWidth: "200px",
+    transition: "all 0.3s",
     li: {
       listStyleType: "none",
     },
@@ -45,8 +47,8 @@ export const MENU_ITEM_STYLES = {
       padding: "5px 10px",
       display: "block",
       "&:hover": {
-        color: "#018ef5",
-        backgroundColor: "rgba(1, 142, 245, 0.2)",
+        color: "rgb(252, 185, 65)",
+        backgroundColor: " rgba(252, 185, 65, 0.2)",
       },
     },
   },

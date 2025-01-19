@@ -50,7 +50,6 @@ export const handleLogin = createAsyncThunk(
         const res = await authService.login(payload);
 
         const { request_token } = res?.data || {};
-        console.log("🚀request_token---->", request_token);
         const { username } = payload;
         tokenMethod.set({ username, request_token });
         message.success("Đăng nhập thành công");

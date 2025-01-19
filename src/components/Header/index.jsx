@@ -74,7 +74,7 @@ function Header() {
                 textTransform: "capitalize",
               }}
             >
-              Đăng nhập
+              Login
             </ButtonCustom>
           )}
           {!!tokenMethod.get() && <HeaderAuthen />}

@@ -75,7 +75,7 @@ const MovieDetailPage = () => {
       <InfoSection
         {...modifiedMovieInfo}
         keyFirst={keyFirst}
-        loading={loading}
+        loading={!loading}
       />
       <VideosSection
         videos={video}

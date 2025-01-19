@@ -1,4 +1,4 @@
-import { createTheme, css } from "@mui/material/styles";
+import { createTheme } from "@mui/material/styles";
 
 // Create a theme instance.
 
@@ -124,13 +124,6 @@ const theme = createTheme({
         },
       },
     },
-    MuiTypography: {
-      styleOverrides: {
-        root: {
-          color: (theme) => theme.palette.common,
-        },
-      },
-    },
   },
   breakpoints: {
     values: {
@@ -210,64 +203,6 @@ const responsiveVariables = {
     // "--fz-btn": "0.45rem",
     "--size-logo": "40px",
   },
-  // [theme.breakpoints.down("tabletXs")]: {
-  //   "--fz-text-tab": "1.2rem",
-  //   "--fz-h2": "2rem",
-  //   "--gap-tab": "1.6rem",
-  // },
-  // [theme.breakpoints.between("sm", "md")]: {
-  //   "--fz": "14px", // Giữa sm và md
-  // },
-  // [theme.breakpoints.up("lg")]: {
-  //   // "--fz": "80px", // Lớn hơn lg
-  // },
 };
-// const responsiveVariables = {
-//   "--h-header": "70px",
-//   "--fz-menu": "16px",
-//   "--gap-menu-item": "24px",
-//   "--fz-text": "1.6rem",
-//   "--fz-text-tab": "1.4rem",
-//   "--fz-h5": "2rem",
-//   "--fz-h6": "2rem",
-//   "--fz-h2": "2.5rem",
-//   "--size-logo": "70px",
-//   "--pt-section": "40px",
-//   "--gap-tab": "2.4rem",
-//   "--fz-text-sm": "1.4rem",
-//   "--fz-btn": "1.2rem",
-//   // Responsive breakpoints
-//   [theme.breakpoints.down("tabletLg")]: {
-//     "--fz-menu": "14px",
-//     "--gap-menu-item": "16px",
-//   },
-//   [theme.breakpoints.down("mobileXl")]: {
-//     "--h-header": "60px",
-//   },
-//   [theme.breakpoints.down("mobileMd")]: {
-//     "--size-logo": "50px",
-//     "--fz-h5": "1.8rem",
-//     "--pt-section": "20px",
-//     "--fz-text-sm": "1rem",
-//     "--fz-h6": "1.5rem",
-//   },
-//   [theme.breakpoints.down("tabletMd")]: {
-//     "--fz-text-tab": "1.2rem",
-//     "--fz-h2": "2rem",
-//     "--gap-tab": "1.6rem",
-//   },
-//   [theme.breakpoints.down("tabletXs")]: {
-//     "--fz-h2": "2.5rem",
-//   },
-//   [theme.breakpoints.down("mediumDevice")]: {
-//     "--fz-text": "1.4rem",
-//   },
-//   [theme.breakpoints.down("desktopSm")]: {
-//     "--fz-btn": "0.6rem",
-//   },
-//   [theme.breakpoints.down("mobileSm")]: {
-//     "--fz-btn": "0.45rem",
-//   },
-// };
 
 export default theme;

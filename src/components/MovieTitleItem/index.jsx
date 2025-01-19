@@ -44,7 +44,7 @@ const MovieTitleItem = ({ link, children }) => {
           transition: "opacity 0.3s ease",
         }}
       >
-        Xem tất cả
+        View all
         <ArrowForwardIosIcon sx={{ fontSize: "12px" }} />
       </Typography>
     </Box>

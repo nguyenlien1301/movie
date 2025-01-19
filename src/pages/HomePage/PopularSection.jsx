@@ -7,15 +7,12 @@ import "swiper/css/pagination";
 import PATHS from "../../constants/path";
 import CustomEmpty from "../../components/ComponentEmpty";
 import { useDispatch, useSelector } from "react-redux";
-
 import {
   handleGetPopular,
   resetMovies,
 } from "../../store/reducer/popularReducer";
 import { TYPE_PAGE } from "../../constants/general";
 import CardSliderItem from "../../components/CardSliderItem";
-import { CustomSwiper } from "../../components/CustomStyleds";
-import ComponentLoading from "../../components/ComponentLoading";
 import SkeletonImage from "../../components/SkeletonImage";
 import SwiperComponent from "../../components/SwiperComponent";
 import MovieTitleItem from "../../components/MovieTitleItem";
@@ -30,7 +27,7 @@ const PopularSection = () => {
   }, []);
   return (
     <ContainerComponent>
-      <MovieTitleItem link={PATHS.MOVIES.POPULAR}>Phim phổ biến</MovieTitleItem>
+      <MovieTitleItem link={PATHS.MOVIES.POPULAR}>Popular Movie</MovieTitleItem>
       <Box mt="15px">
         {loading ? (
           <SwiperComponent>

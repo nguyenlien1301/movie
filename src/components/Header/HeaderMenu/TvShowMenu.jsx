@@ -20,18 +20,16 @@ const TvShowMenu = () => {
           </Box>
           <Box component="ul">
             <Box component="li">
-              <Link to={PATHS.TV_SERIES.AIRING_TODAY}>
-                Phát sóng ngày hôm nay
-              </Link>
+              <Link to={PATHS.TV_SERIES.AIRING_TODAY}>Airing Today</Link>
             </Box>
             <Box component="li">
-              <Link to={PATHS.TV_SERIES.ON_THE_AIR}>Đang phát sóng</Link>
+              <Link to={PATHS.TV_SERIES.ON_THE_AIR}>On TV</Link>
             </Box>
             <Box component="li">
-              <Link to={PATHS.TV_SERIES.POPULAR}>Phổ biến</Link>
+              <Link to={PATHS.TV_SERIES.POPULAR}>Popular</Link>
             </Box>
             <Box component="li">
-              <Link to={PATHS.TV_SERIES.TOP_RATED}>Đánh giá cao</Link>
+              <Link to={PATHS.TV_SERIES.TOP_RATED}>Top Rated</Link>
             </Box>
           </Box>
         </Box>

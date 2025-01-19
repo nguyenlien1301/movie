@@ -15,6 +15,10 @@ import ArrayFromComponent from "../../components/ArrayFromComponent";
 import TypographyTitle from "../../components/TypographyTitle";
 import IntroMovies from "../../components/IntroMovies";
 import movieSlice from "../../utils/movieSlice";
+import ContainerComponent from "../../components/ContainerComponent";
+import Breadcrumb from "../../components/Breadcrumb";
+import { Link } from "react-router-dom";
+import PATHS from "../../constants/path";
 
 const OnTheAirTvPage = () => {
   const {
@@ -33,45 +37,39 @@ const OnTheAirTvPage = () => {
     }
   };
   const loading = useDebounce(onTheAirTvLoading, 300);
-  const introOnTheAir = movieSlice(tvLists);
   return (
-    <>
-      <IntroMovies movies={introOnTheAir} loading={loading} />
-      <Box
-        sx={{
-          pt: (theme) => `calc(${theme.header.heightHeader} + var(--pt))`,
-          bgcolor: (theme) => theme.palette.common,
-          height: "auto",
-        }}
+    <ContainerComponent sx={{ pt: "var(--h-header)" }}>
+      <Breadcrumb>
+        <Breadcrumb.Item>
+          <Link to={PATHS.HOME}>Home</Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item isActive>The Airing TV Series</Breadcrumb.Item>
+      </Breadcrumb>
+      <TypographyTitle textAlign="center">The Airing TV Series</TypographyTitle>
+      <InfiniteScrollComponent
+        dataLength={tvLists.length}
+        next={fetchMore}
+        hasMore={hasMore}
       >
-        <Container maxWidth="xl">
-          <TypographyTitle>Phim đang phát sóng</TypographyTitle>
-          <InfiniteScrollComponent
-            dataLength={tvLists.length}
-            next={fetchMore}
-            hasMore={hasMore}
-          >
-            <Grid container spacing={2}>
-              {loading ? (
-                <ArrayFromComponent />
-              ) : tvLists.length > 0 ? (
-                tvLists.map((tvList, index) => {
-                  return (
-                    <CardItem
-                      key={`${tvList.id}-${index}`}
-                      {...tvList}
-                      type={CARD_ITEM_TYPE.tv_series}
-                    />
-                  );
-                })
-              ) : (
-                <CustomEmpty description="Không tìm thấy hình ảnh nào" />
-              )}
-            </Grid>
-          </InfiniteScrollComponent>
-        </Container>
-      </Box>
-    </>
+        <Grid container spacing={2}>
+          {loading ? (
+            <ArrayFromComponent />
+          ) : tvLists.length > 0 ? (
+            tvLists.map((tvList, index) => {
+              return (
+                <CardItem
+                  key={`${tvList.id}-${index}`}
+                  {...tvList}
+                  type={CARD_ITEM_TYPE.tv_series}
+                />
+              );
+            })
+          ) : (
+            <CustomEmpty description="Không tìm thấy hình ảnh nào" />
+          )}
+        </Grid>
+      </InfiniteScrollComponent>
+    </ContainerComponent>
   );
 };
 

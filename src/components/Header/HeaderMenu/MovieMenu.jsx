@@ -15,21 +15,21 @@ const MovieMenu = () => {
       <Box component="ul" sx={MENU_ITEM_STYLES}>
         <Box component="li">
           <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-            Phim
+            Movies
             <ExpandMoreIcon />
           </Box>
           <Box component="ul">
             <Box component="li">
-              <Link to={PATHS.MOVIES.NOW_PLAYING}>Phim đang chiếu</Link>
+              <Link to={PATHS.MOVIES.NOW_PLAYING}>Now Playing</Link>
             </Box>
             <Box component="li">
-              <Link to={PATHS.MOVIES.POPULAR}>Phim phổ biến</Link>
+              <Link to={PATHS.MOVIES.POPULAR}>Popular</Link>
             </Box>
             <Box component="li">
-              <Link to={PATHS.MOVIES.TOP_RATED}>Phim được đánh giá cao</Link>
+              <Link to={PATHS.MOVIES.TOP_RATED}>Top Rated</Link>
             </Box>
             <Box component="li">
-              <Link to={PATHS.MOVIES.UPCOMING}>Phim sắp chiếu</Link>
+              <Link to={PATHS.MOVIES.UPCOMING}>Upcoming</Link>
             </Box>
           </Box>
         </Box>

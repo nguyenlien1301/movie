@@ -11,7 +11,6 @@ import CustomEmpty from "../../components/ComponentEmpty";
 import SkeletonImage from "../../components/SkeletonImage";
 import SwiperComponent from "../../components/SwiperComponent";
 import TypographyTitle from "../../components/TypographyTitle";
-import { removeVietnameseTones } from "../../utils/format";
 
 const SimilarSection = ({ similars = [], loading = false }) => {
   return (
@@ -34,43 +33,45 @@ const SimilarSection = ({ similars = [], loading = false }) => {
                   PATHS.MOVIE_DETAIL.INDEX +
                   `/${similar?.id}/${similar.name || similar.title}`;
                 return (
-                  <SwiperSlide key={similar?.id || index}>
-                    <Box
-                      sx={{
-                        position: "relative",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        borderRadius: "30px",
-                        overflow: "hidden",
-                        transition: "0.3s",
-                        border: "2px solid transparent",
-                        boxShadow:
-                          "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
-                        ":hover": {
-                          border: (theme) =>
-                            `2px solid ${theme.borderColorCustom.border}`,
-                        },
-                        ":hover .MuiCardMedia-root": {
-                          transform: "scale(1.05)",
-                        },
-                      }}
-                    >
-                      <CardMedia
-                        component={Link}
-                        to={pathDetail}
+                  similar?.poster_path && (
+                    <SwiperSlide key={similar?.id || index}>
+                      <Box
                         sx={{
-                          width: "100%",
-                          height: "300px",
-                          objectFit: "cover",
-                          borderRadius: "21px", // Bo tròn góc
-                          boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Bóng mờ
-                          transition: "transform 0.3s",
+                          position: "relative",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          borderRadius: "30px",
+                          overflow: "hidden",
+                          transition: "0.3s",
+                          border: "2px solid transparent",
+                          boxShadow:
+                            "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px",
+                          ":hover": {
+                            border: (theme) =>
+                              `2px solid ${theme.borderColorCustom.border}`,
+                          },
+                          ":hover .MuiCardMedia-root": {
+                            transform: "scale(1.05)",
+                          },
                         }}
-                        image={getImageUrl(similar?.poster_path)}
-                      />
-                    </Box>
-                  </SwiperSlide>
+                      >
+                        <CardMedia
+                          component={Link}
+                          to={pathDetail}
+                          sx={{
+                            width: "100%",
+                            height: "300px",
+                            objectFit: "cover",
+                            borderRadius: "21px", // Bo tròn góc
+                            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)", // Bóng mờ
+                            transition: "transform 0.3s",
+                          }}
+                          image={getImageUrl(similar?.poster_path)}
+                        />
+                      </Box>
+                    </SwiperSlide>
+                  )
                 );
               })}
             </SwiperComponent>

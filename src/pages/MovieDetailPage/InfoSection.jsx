@@ -20,6 +20,9 @@ import {
   handleOpenPopup,
 } from "../../store/reducer/videoPopupReducer";
 import { message } from "antd";
+import Breadcrumb from "../../components/Breadcrumb";
+import { Link } from "react-router-dom";
+import PATHS from "../../constants/path";
 
 const TypographyCustom = styled(Box)(({ theme }) => ({
   color: "var(--white)",
@@ -62,9 +65,7 @@ const InfoSection = ({
   const backdropUrl = getMediaImageUrl(backdrop_path) || "";
 
   return (
-    <Box
-      sx={{ pt: (theme) => `calc(${theme.header.heightHeader} + var(--pt))` }}
-    >
+    <Box sx={{ pt: (theme) => theme.header.heightHeader }}>
       {backdropUrl && loading && (
         <Box
           sx={{
@@ -82,10 +83,18 @@ const InfoSection = ({
         />
       )}
       <Container maxWidth="xl">
+        <Breadcrumb>
+          <Breadcrumb.Item isBack />
+          <Breadcrumb.Item>
+            <Link to={PATHS.HOME}>Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item isActive>{original_title}</Breadcrumb.Item>
+        </Breadcrumb>
         <Grid
           container
           spacing={{ mobileXl: 2, tabletXs: 4 }}
           sx={(theme) => ({
+            mt: "20px",
             [theme.breakpoints.down("mobileXl")]: {
               flexDirection: "column",
               gap: 4,
@@ -375,20 +384,26 @@ const InfoSection = ({
                 size="small"
                 onClick={handleOpen}
               >
-                Xem
+                Watch
               </ButtonCustom>
             )}
           </Grid>
         </Grid>
         {overview && (
           <Paper sx={{ mt: 2, padding: "20px", minHeight: "100%" }}>
-            <Typography component="h5" variant="h5" sx={{ fontWeight: "bold" }}>
-              {!loading ? <Skeleton width="20%" /> : "Tổng quan"}
+            <Typography
+              component="h5"
+              variant="h5"
+              sx={{ fontWeight: "bold", fontSize: "2rem" }}
+            >
+              {!loading ? <Skeleton width="20%" /> : "Overview"}
             </Typography>
             {!loading ? (
               <Skeleton variant="text" width="50%" height={100} />
             ) : (
-              <Typography sx={{ mt: "10px" }}>{overview}</Typography>
+              <Typography sx={{ mt: "10px", fontSize: "1.5rem" }}>
+                {overview}
+              </Typography>
             )}
           </Paper>
         )}

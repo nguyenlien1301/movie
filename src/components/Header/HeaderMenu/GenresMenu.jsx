@@ -16,15 +16,15 @@ const GenresMenu = () => {
       <Box component="ul" sx={MENU_ITEM_STYLES}>
         <Box component="li">
           <Box sx={{ display: "flex", alignItems: "center", gap: "5px" }}>
-            Thể loại
+            genres
             <ExpandMoreIcon />
           </Box>
           <Box component="ul">
             <Box component="li">
-              <Link to={PATHS.GENRES.MOVIE}>Thể loại phim</Link>
+              <Link to={PATHS.GENRES.MOVIE}>Movie</Link>
             </Box>
             <Box component="li">
-              <Link to={PATHS.GENRES.TV}>Thể loại phim truyền hình</Link>
+              <Link to={PATHS.GENRES.TV}>TV Series</Link>
             </Box>
           </Box>
         </Box>

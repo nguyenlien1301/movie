@@ -24,7 +24,7 @@ const AiringToDayTvSection = () => {
   return (
     <ContainerComponent>
       <MovieTitleItem link={PATHS.TV_SERIES.AIRING_TODAY}>
-        Phim truyền hình phát sóng hôm nay
+        TV Series Airing Today
       </MovieTitleItem>
       <Box mt="15px">
         {loading ? (

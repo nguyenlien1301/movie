@@ -24,7 +24,7 @@ const NowPlayingSeciton = () => {
   return (
     <ContainerComponent>
       <MovieTitleItem link={PATHS.MOVIES.NOW_PLAYING}>
-        Phim đang chiếu
+        Playing Movie
       </MovieTitleItem>
       <Box mt="15px">
         {loading ? (
@@ -44,7 +44,6 @@ const NowPlayingSeciton = () => {
             ))}
           </SwiperComponent>
         ) : (
-          // Hiển thị CustomEmpty nếu không có dữ liệu
           <CustomEmpty description="No movies are showing" />
         )}
       </Box>

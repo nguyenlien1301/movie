@@ -15,6 +15,10 @@ import useDebounce from "../../hooks/useDebounce";
 import TypographyTitle from "../../components/TypographyTitle";
 import IntroMovies from "../../components/IntroMovies";
 import movieSlice from "../../utils/movieSlice";
+import Breadcrumb from "../../components/Breadcrumb";
+import { Link } from "react-router-dom";
+import PATHS from "../../constants/path";
+import ContainerComponent from "../../components/ContainerComponent";
 
 const UpcomingPage = () => {
   const {
@@ -32,40 +36,34 @@ const UpcomingPage = () => {
       dispath(updatePage(params.page + 1));
     }
   };
-
   const loading = useDebounce(upcomingLoading, 300);
-  const introUpcoming = movieSlice(movies);
   return (
-    <>
-      <IntroMovies movies={introUpcoming} loading={loading} />
-      <Box
-        sx={{
-          pt: (theme) => `calc(${theme.header.heightHeader} + var(--pt))`,
-          bgcolor: (theme) => theme.palette.common,
-        }}
+    <ContainerComponent sx={{ pt: "var(--h-header)" }}>
+      <Breadcrumb>
+        <Breadcrumb.Item>
+          <Link to={PATHS.HOME}>Home</Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item isActive>Upcoming</Breadcrumb.Item>
+      </Breadcrumb>
+      <TypographyTitle textAlign="center">Upcoming Movies</TypographyTitle>
+      <InfiniteScrollComponent
+        dataLength={movies.length}
+        next={fetchMore}
+        hasMore={hasMore}
       >
-        <Container maxWidth="xl">
-          <TypographyTitle>Phim sắp chiếu</TypographyTitle>
-          <InfiniteScrollComponent
-            dataLength={movies.length}
-            next={fetchMore}
-            hasMore={hasMore}
-          >
-            <Grid container spacing={2}>
-              {loading ? (
-                <ArrayFromComponent />
-              ) : movies.length > 0 ? (
-                movies.map((movie, index) => {
-                  return <CardItem key={`${movie.id}-${index}`} {...movie} />;
-                })
-              ) : (
-                <CustomEmpty description="Không tìm thấy hình ảnh nào" />
-              )}
-            </Grid>
-          </InfiniteScrollComponent>
-        </Container>
-      </Box>
-    </>
+        <Grid container spacing={2}>
+          {loading ? (
+            <ArrayFromComponent />
+          ) : movies.length > 0 ? (
+            movies.map((movie, index) => {
+              return <CardItem key={`${movie.id}-${index}`} {...movie} />;
+            })
+          ) : (
+            <CustomEmpty description="Không tìm thấy hình ảnh nào" />
+          )}
+        </Grid>
+      </InfiniteScrollComponent>
+    </ContainerComponent>
   );
 };
 

@@ -1,4 +1,3 @@
-import React, { useEffect, useRef, useState } from "react";
 import {
   Box,
   Dialog,
@@ -10,7 +9,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
 import { handleClosePopup } from "../../store/reducer/videoPopupReducer";
 import ReactPlayer from "react-player";
-import getImageUrl, { getMediaImageUrl } from "../../utils/imageUrl";
+import getImageUrl from "../../utils/imageUrl";
 
 const PopupVideos = ({ title, backdrop_path }) => {
   const dispatch = useDispatch();

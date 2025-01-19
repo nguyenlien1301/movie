@@ -10,7 +10,7 @@ const InfiniteScrollComponent = ({ dataLength, next, hasMore, children }) => {
       sx={{
         maxHeight: "500px", // Hoặc một giá trị chiều cao cố định
         overflowY: "auto",
-        mt: "15px",
+        mt: "30px",
         backgroundColor: (theme) => theme.backgroundCustom.backgroundMuiPaper,
         boxShadow: 3,
       }}

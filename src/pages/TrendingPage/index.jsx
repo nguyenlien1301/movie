@@ -17,6 +17,9 @@ import CardPosterItem from "../../components/CardPosterItem";
 import useDebounce from "../../hooks/useDebounce";
 import TypographyTitle from "../../components/TypographyTitle";
 import ArrayFromComponent from "../../components/ArrayFromComponent";
+import Breadcrumb from "../../components/Breadcrumb";
+import { Link } from "react-router-dom";
+import PATHS from "../../constants/path";
 
 const tabItem = [
   { id: 1, label: "All", value: "all" },
@@ -64,6 +67,12 @@ const TrendingPage = () => {
       }}
     >
       <Container maxWidth="xl">
+        <Breadcrumb>
+          <Breadcrumb.Item>
+            <Link to={PATHS.HOME}>Home</Link>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item isActive>Trending</Breadcrumb.Item>
+        </Breadcrumb>
         <Box
           sx={(theme) => ({
             display: "flex",
@@ -85,11 +94,6 @@ const TrendingPage = () => {
             {currentTab === "tv" && "Xu hướng phim truyền hình"}
           </TypographyTitle>
           <Box
-            // sx={{
-            //   display: "flex",
-            //   alignItems: "center",
-            //   gap: { tabletXs: 1, tabletSm: 4 },
-            // }}
             sx={(theme) => ({
               display: "flex",
               alignItems: "center",
@@ -180,7 +184,13 @@ const TrendingPage = () => {
             <ArrayFromComponent />
           ) : trendingMovie.length > 0 ? (
             trendingMovie.map((movie, index) => (
-              <CardPosterItem key={index} {...movie} />
+              <CardPosterItem
+                key={index}
+                {...movie}
+                size={{
+                  desktopSm: 2,
+                }}
+              />
             ))
           ) : (
             <CustomEmpty description="Không tìm thấy hình ảnh nào" />

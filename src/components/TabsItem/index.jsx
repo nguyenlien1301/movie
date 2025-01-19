@@ -40,7 +40,7 @@ const TabsItem = ({
         },
       }}
     >
-      <Tab label="All" value={0}></Tab>
+      {/* <Tab label="All" value={0}></Tab> */}
       {filterGenres?.map((genres, index) => {
         return <Tab key={index} label={genres.name} value={genres.id} />;
       })}

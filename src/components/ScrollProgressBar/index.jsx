@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { LinearProgress } from "@mui/material";
+import { useLocation } from "react-router-dom";
 
 const ScrollProgressBar = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
