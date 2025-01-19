@@ -33,7 +33,6 @@ export const SkeletonImageStyle = styled.div`
 `;
 
 const IntroMovies = ({ movies, loading }) => {
-  console.log("🚀movies---->", movies);
   return (
     <Box
       sx={{

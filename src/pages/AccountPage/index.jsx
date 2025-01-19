@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Box, useMediaQuery } from "@mui/material";
 import LoginPage from "./login";
 
-// Import component Register
-
 const AccountPage = () => {
   const isSmallScreen = useMediaQuery((theme) =>
     theme.breakpoints.down("mobileLg")
