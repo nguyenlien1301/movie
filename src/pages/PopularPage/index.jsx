@@ -45,7 +45,7 @@ const PopularPage = () => {
         </Breadcrumb.Item>
         <Breadcrumb.Item isActive>Popular</Breadcrumb.Item>
       </Breadcrumb>
-      <TypographyTitle textAlign="center">Popular Movies</TypographyTitle>
+      <TypographyTitle>Popular Movies</TypographyTitle>
       <InfiniteScrollComponent
         dataLength={movies.length}
         next={fetchMore}

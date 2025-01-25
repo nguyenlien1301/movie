@@ -5,7 +5,10 @@ import { useNavigate } from "react-router-dom";
 import WestIcon from "@mui/icons-material/West";
 const Breadcrumb = ({ children }) => {
   return (
-    <Breadcrumbs separator={<NavigateNextIcon fontSize="large" />}>
+    <Breadcrumbs
+      separator={<NavigateNextIcon fontSize="large" />}
+      sx={{ my: "20px" }}
+    >
       {children}
     </Breadcrumbs>
   );

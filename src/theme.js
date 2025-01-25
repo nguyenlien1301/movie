@@ -10,6 +10,7 @@ const cssVariables = {
   "--pt": "30px",
   "--transtion": "0.2s",
   "--grey": "#222",
+  "--bg-dark-blue": "#06121d",
 };
 
 const theme = createTheme({
@@ -161,12 +162,12 @@ const responsiveVariables = {
   "--gap-menu-item": "24px",
   "--fz-text": "1.6rem",
   "--fz-text-tab": "1.4rem",
-  "--fz-h5": "2rem",
+  "--fz-h5": "1.5rem",
   "--fz-h6": "2rem",
   "--fz-h4": "2rem",
-  "--fz-h2": "2.5rem",
+  "--fz-h2": "2rem",
   "--size-logo": "70px",
-  "--pt-section": "40px",
+  "--pt-section": "30px",
   "--gap-tab": "2.4rem",
   "--fz-text-sm": "1.4rem",
   "--fz-btn": "1.2rem",

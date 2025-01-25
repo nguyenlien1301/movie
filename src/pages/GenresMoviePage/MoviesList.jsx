@@ -15,9 +15,26 @@ const MoviesList = ({ movies, isLoading, isError }) => {
   if (isLoading) {
     return (
       <Box>
-        <Box>
-          <ArrayFromComponent />
-        </Box>
+        <Grid container spacing={2}>
+          {new Array(10).fill("").map((_, index) => {
+            return (
+              <Grid
+                key={index}
+                item
+                size={{
+                  mobileXs: 6,
+                  mobileSm: 4,
+                  tabletSm: 3,
+                  mobileXl: 4,
+                  mobileLg: 6,
+                  largeDevice: 2.4,
+                }}
+              >
+                <ProductCardSkeleton />
+              </Grid>
+            );
+          })}
+        </Grid>
       </Box>
     );
   }

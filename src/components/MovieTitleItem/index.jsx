@@ -11,6 +11,8 @@ const MovieTitleItem = ({ link, children }) => {
         alignItems: "center",
         gap: 2,
         cursor: "pointer",
+        pb: "5px",
+        borderBottom: "1.5px solid #ffffff93",
         "&:hover .MuiTypography-body1": {
           opacity: "1",
         },
@@ -23,6 +25,7 @@ const MovieTitleItem = ({ link, children }) => {
           fontWeight: 600,
           fontSize: "var(--fz-h5)",
           cursor: "pointer",
+          textTransform: "uppercase",
         }}
       >
         {children}

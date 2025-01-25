@@ -24,7 +24,7 @@ const NowPlayingSeciton = () => {
   return (
     <ContainerComponent>
       <MovieTitleItem link={PATHS.MOVIES.NOW_PLAYING}>
-        Playing Movie
+        Playing movies
       </MovieTitleItem>
       <Box mt="15px">
         {loading ? (

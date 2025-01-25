@@ -28,7 +28,7 @@ const UpcomingSection = () => {
   return (
     <ContainerComponent>
       <MovieTitleItem link={PATHS.MOVIES.UPCOMING}>
-        Upcomming Movie
+        Upcomming movies
       </MovieTitleItem>
       <Box mt="15px">
         {loading ? (

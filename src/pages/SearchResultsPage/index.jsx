@@ -20,11 +20,17 @@ const SearchResultsPage = () => {
           variant="h2"
           sx={{ fontSize: "2rem", fontWeight: "bold" }}
         >
-          Kết quả tìm kiếm
+          Search results
         </Typography>
         <Grid container spacing={2} sx={{ mt: "15px" }}>
           {!loading && movies.length === 0 ? (
-            <CustomEmpty description="Không tìm thấy kết quả tìm kiếm nào nào" />
+            <CustomEmpty
+              description="No search results found"
+              style={{
+                width: "100%",
+                textAlign: "center",
+              }}
+            />
           ) : (
             movies.map((movie, index) => (
               <CardItem key={`${movie.id}-${index}`} {...movie} />

@@ -46,7 +46,7 @@ const TopRatedTvPage = () => {
         </Breadcrumb.Item>
         <Breadcrumb.Item isActive>Top Rated TV Series</Breadcrumb.Item>
       </Breadcrumb>
-      <TypographyTitle textAlign="center">Top Rated TV Series</TypographyTitle>
+      <TypographyTitle>Top Rated TV Series</TypographyTitle>
       <InfiniteScrollComponent
         dataLength={tvLists.length}
         next={fetchMore}

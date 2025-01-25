@@ -28,7 +28,7 @@ const TopRatedSection = () => {
   return (
     <ContainerComponent>
       <MovieTitleItem link={PATHS.MOVIES.TOP_RATED}>
-        Top Rated Movie
+        Top rated movies
       </MovieTitleItem>
       <Box mt="15px">
         {loading ? (

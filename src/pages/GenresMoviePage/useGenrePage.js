@@ -3,23 +3,16 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import queryString from "query-string";
 import useMutation from "../../hooks/useMutation";
 import discoverService from "../../services/discoverService";
-import useDebounce from "../../hooks/useDebounce";
 import useQuery from "../../hooks/useQuery";
 import genresService from "../../services/genresService";
 import { SORT_OPTIONS } from "../../constants/general";
+import useDebounce from "@/hooks/useDebounce";
 
 const PRODUCT_LIMITS = 20;
 const useGenrePage = () => {
   const { search } = useLocation();
   const queryObject = queryString.parse(search);
   const [_, setSearchParams] = useSearchParams();
-
-  const {
-    data: genresData,
-    loading: genresLoading,
-    error: genresError,
-  } = useQuery(genresService.getGenresMovieList);
-  const genres = genresData?.genres || [];
 
   const {
     data: moviesData,
@@ -29,10 +22,14 @@ const useGenrePage = () => {
   } = useMutation((query) =>
     discoverService.getDiscoverMovie(query || `?limit=${PRODUCT_LIMITS}`)
   );
-
   const movies = moviesData?.results || [];
-  const moviesListLoading = useDebounce(moviesLoading, 5000);
-
+  const moviesListLoading = useDebounce(moviesLoading, 1000);
+  const {
+    data: genresData,
+    loading: genresLoading,
+    error: genresError,
+  } = useQuery(genresService.getGenresMovieList);
+  const genres = genresData?.genres || [];
   useEffect(() => {
     fetchMovies(search);
   }, [search]);

@@ -3,19 +3,18 @@ import Grid from "@mui/material/Grid2";
 import SkeletonImage from "../SkeletonImage";
 
 const ArrayFromComponent = () => {
-  return Array(10)
+  return Array(12)
     .fill("")
     .map((_, index) => (
       <Grid
         key={index}
         size={{
-          desktopSm: 2,
-          tabletSm: 3,
-          mobileLg: 6,
-          mobileXs: 12,
-          mediumDevice: 4,
-          smallDevice: 6,
-          largeDevice: 2.4,
+          mobileXs: 6,
+          mobileSm: 4,
+          mobileXl: 3,
+          mobileLg: 4,
+          tabletSm: 2.4,
+          desktopXs: 2,
         }}
       >
         <SkeletonImage />

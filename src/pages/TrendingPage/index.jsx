@@ -20,6 +20,7 @@ import ArrayFromComponent from "../../components/ArrayFromComponent";
 import Breadcrumb from "../../components/Breadcrumb";
 import { Link } from "react-router-dom";
 import PATHS from "../../constants/path";
+import ContainerComponent from "@/components/ContainerComponent";
 
 const tabItem = [
   { id: 1, label: "All", value: "all" },
@@ -59,145 +60,146 @@ const TrendingPage = () => {
   };
   const loading = useDebounce(trendingLoading, 300);
   return (
-    <Box
+    <ContainerComponent
       sx={{
-        pt: (theme) => `calc(${theme.header.heightHeader} + var(--pt))`,
-        bgcolor: (theme) => theme.palette.common,
-        height: "auto",
+        pt: "var(--h-header)",
       }}
     >
-      <Container maxWidth="xl">
-        <Breadcrumb>
-          <Breadcrumb.Item>
-            <Link to={PATHS.HOME}>Home</Link>
-          </Breadcrumb.Item>
-          <Breadcrumb.Item isActive>Trending</Breadcrumb.Item>
-        </Breadcrumb>
+      <Breadcrumb>
+        <Breadcrumb.Item>
+          <Link to={PATHS.HOME}>Home</Link>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item isActive>Trending</Breadcrumb.Item>
+      </Breadcrumb>
+      <Box
+        sx={(theme) => ({
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          [theme.breakpoints.down("tabletXs")]: {
+            flexDirection: "column",
+            gap: "20px",
+            "& .MuiBox-root": {
+              width: "100%",
+              gap: "24px",
+            },
+          },
+        })}
+      >
+        <TypographyTitle>
+          {currentTab === "all" && "Xu hướng phim & truyền hình"}
+          {currentTab === "movie" && "Xu hướng phim"}
+          {currentTab === "tv" && "Xu hướng phim truyền hình"}
+        </TypographyTitle>
         <Box
           sx={(theme) => ({
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
-            [theme.breakpoints.down("tabletXs")]: {
+            gap: { tabletXs: 1, tabletSm: 4 },
+            [theme.breakpoints.down("mobileMd")]: {
               flexDirection: "column",
-              gap: "20px",
-              "& .MuiBox-root": {
-                width: "100%",
-                gap: "24px",
-              },
+              alignItems: "flex-start",
+              gap: "0 !important",
             },
           })}
         >
-          <TypographyTitle>
-            {currentTab === "all" && "Xu hướng phim & truyền hình"}
-            {currentTab === "movie" && "Xu hướng phim"}
-            {currentTab === "tv" && "Xu hướng phim truyền hình"}
-          </TypographyTitle>
-          <Box
-            sx={(theme) => ({
-              display: "flex",
+          <Tabs
+            value={currentTab}
+            onChange={handleChangeTab}
+            textColor=""
+            indicatorColor="none"
+            aria-label="secondary tabs example"
+            sx={{
               alignItems: "center",
-              gap: { tabletXs: 1, tabletSm: 4 },
-              [theme.breakpoints.down("mobileMd")]: {
-                flexDirection: "column",
-                alignItems: "flex-start",
-                gap: "0 !important",
+              "& .MuiTabs-flexContainer": {
+                gap: "var(--gap-tab)",
               },
-            })}
+            }}
           >
-            <Tabs
-              value={currentTab}
-              onChange={handleChangeTab}
-              textColor=""
-              indicatorColor="none"
-              aria-label="secondary tabs example"
+            {tabItem.map(({ id, value, label }, index) => {
+              return (
+                <Tab
+                  key={id || index}
+                  value={value}
+                  label={label}
+                  sx={{
+                    color: (theme) =>
+                      currentTab === value
+                        ? "var(--white)"
+                        : theme.palette.common.color,
+                    border: (theme) =>
+                      currentTab === value
+                        ? "transparent"
+                        : `1px solid ${theme.borderColorCustom.border}`,
+                    borderRadius: "50px",
+                    minHeight: "30px",
+                    p: "0 10px",
+                    minWidth: { tabletXs: "60px", tabletSm: "70px" },
+                    backgroundColor:
+                      currentTab === value
+                        ? "var(--blue-light)"
+                        : "transparent",
+                    ":hover": {
+                      backgroundColor: "var(--blue-light)",
+                      border: "var(--border) transparent",
+                    },
+                    fontSize: "var(--fz-text-tab)",
+                    textTransform: "capitalize",
+                    transition: "all 0.2s",
+                  }}
+                />
+              );
+            })}
+          </Tabs>
+          <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <Select
+              labelId="demo-controlled-open-select-label"
+              id="demo-controlled-open-select"
+              open={selected}
+              onClose={handleClose}
+              MenuProps={{
+                disableScrollLock: true, // Vô hiệu hóa khóa cuộn
+              }}
+              onOpen={handleOpen}
+              value={timeWindow[currentTab]}
+              onChange={handleChangeSelect}
               sx={{
-                alignItems: "center",
-                "& .MuiTabs-flexContainer": {
-                  gap: "var(--gap-tab)",
+                "& .MuiSelect-select": {
+                  display: "flex",
+                  alignItems: "center",
+                  py: "4px",
                 },
               }}
             >
-              {tabItem.map(({ id, value, label }, index) => {
-                return (
-                  <Tab
-                    key={id || index}
-                    value={value}
-                    label={label}
-                    sx={{
-                      color: (theme) =>
-                        currentTab === value
-                          ? "var(--white)"
-                          : theme.palette.common.color,
-                      border: (theme) =>
-                        currentTab === value
-                          ? "transparent"
-                          : `1px solid ${theme.borderColorCustom.border}`,
-                      borderRadius: "50px",
-                      minHeight: "30px",
-                      p: "0 10px",
-                      minWidth: { tabletXs: "60px", tabletSm: "70px" },
-                      backgroundColor:
-                        currentTab === value
-                          ? "var(--blue-light)"
-                          : "transparent",
-                      ":hover": {
-                        backgroundColor: "var(--blue-light)",
-                        border: "var(--border) transparent",
-                      },
-                      fontSize: "var(--fz-text-tab)",
-                      textTransform: "capitalize",
-                      transition: "all 0.2s",
-                    }}
-                  />
-                );
-              })}
-            </Tabs>
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
-              <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={selected}
-                onClose={handleClose}
-                MenuProps={{
-                  disableScrollLock: true, // Vô hiệu hóa khóa cuộn
-                }}
-                onOpen={handleOpen}
-                value={timeWindow[currentTab]}
-                onChange={handleChangeSelect}
-                sx={{
-                  "& .MuiSelect-select": {
-                    display: "flex",
-                    alignItems: "center",
-                    py: "4px",
-                  },
-                }}
-              >
-                <MenuItem value="day">Xu hướng hôm nay</MenuItem>
-                <MenuItem value="week">Xu hướng tuần này</MenuItem>
-              </Select>
-            </FormControl>
-          </Box>
+              <MenuItem value="day">Xu hướng hôm nay</MenuItem>
+              <MenuItem value="week">Xu hướng tuần này</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
-        <Grid container spacing={2}>
-          {loading ? (
-            <ArrayFromComponent />
-          ) : trendingMovie.length > 0 ? (
-            trendingMovie.map((movie, index) => (
-              <CardPosterItem
-                key={index}
-                {...movie}
-                size={{
-                  desktopSm: 2,
-                }}
-              />
-            ))
-          ) : (
-            <CustomEmpty description="Không tìm thấy hình ảnh nào" />
-          )}
-        </Grid>
-      </Container>
-    </Box>
+      </Box>
+      <Grid container spacing={2}>
+        {loading ? (
+          <ArrayFromComponent />
+        ) : trendingMovie.length > 0 ? (
+          trendingMovie.map((movie, index) => (
+            <CardPosterItem
+              key={index}
+              {...movie}
+              size={{
+                mobileXs: 6,
+                mobileSm: 4,
+                mobileXl: 3,
+                mobileLg: 4,
+                tabletSm: 2.4,
+                desktopXs: 2,
+              }}
+            />
+          ))
+        ) : (
+          <CustomEmpty description="Không tìm thấy hình ảnh nào" />
+        )}
+      </Grid>
+    </ContainerComponent>
   );
 };
 

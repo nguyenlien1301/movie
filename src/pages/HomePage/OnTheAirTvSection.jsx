@@ -24,7 +24,7 @@ const OnTheAirTvSection = () => {
   return (
     <ContainerComponent>
       <MovieTitleItem link={PATHS.TV_SERIES.ON_THE_AIR}>
-        Broadcast TV Series
+        Broadcast tv series
       </MovieTitleItem>
       <Box mt="15px">
         {loading ? (

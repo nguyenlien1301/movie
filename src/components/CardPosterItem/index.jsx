@@ -26,12 +26,11 @@ const CardPosterItem = ({
       <Grid
         item
         size={{
-          // desktopSm: 2,
+          mobileXs: 6,
+          mobileSm: 4,
           tabletSm: 3,
+          mobileXl: 4,
           mobileLg: 6,
-          mobileXs: 12,
-          mediumDevice: 4,
-          smallDevice: 6,
           largeDevice: 2.4,
         }}
         {...rest}
@@ -81,12 +80,11 @@ const CardPosterItem = ({
     <Grid
       item
       size={{
-        // desktopSm: 2,
+        mobileXs: 6,
+        mobileSm: 4,
         tabletSm: 3,
+        mobileXl: 4,
         mobileLg: 6,
-        mobileXs: 12,
-        mediumDevice: 4,
-        smallDevice: 6,
         largeDevice: 2.4,
       }}
       {...rest}

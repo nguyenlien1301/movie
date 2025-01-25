@@ -45,7 +45,7 @@ const OnTheAirTvPage = () => {
         </Breadcrumb.Item>
         <Breadcrumb.Item isActive>The Airing TV Series</Breadcrumb.Item>
       </Breadcrumb>
-      <TypographyTitle textAlign="center">The Airing TV Series</TypographyTitle>
+      <TypographyTitle>The Airing TV Series</TypographyTitle>
       <InfiniteScrollComponent
         dataLength={tvLists.length}
         next={fetchMore}

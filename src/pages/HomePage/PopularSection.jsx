@@ -27,7 +27,9 @@ const PopularSection = () => {
   }, []);
   return (
     <ContainerComponent>
-      <MovieTitleItem link={PATHS.MOVIES.POPULAR}>Popular Movie</MovieTitleItem>
+      <MovieTitleItem link={PATHS.MOVIES.POPULAR}>
+        Popular movies
+      </MovieTitleItem>
       <Box mt="15px">
         {loading ? (
           <SwiperComponent>

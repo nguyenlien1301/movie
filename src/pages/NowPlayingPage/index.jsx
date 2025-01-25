@@ -51,7 +51,7 @@ const NowPlayingPage = () => {
         </Breadcrumb.Item>
         <Breadcrumb.Item isActive>NowPlaying Movies</Breadcrumb.Item>
       </Breadcrumb>
-      <TypographyTitle textAlign="center">NowPlaying Movies</TypographyTitle>
+      <TypographyTitle>NowPlaying movies</TypographyTitle>
       <InfiniteScrollComponent
         dataLength={movies.length}
         next={fetchMore}

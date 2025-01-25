@@ -14,7 +14,8 @@ const Footer = () => {
   return (
     <ContainerComponent
       sx={{
-        backgroundColor: (theme) => theme.bgFooter.background,
+        // backgroundColor: (theme) => theme.bgFooter.background,
+        backgroundColor: "var(--bg-dark-blue)",
         py: "30px",
         mt: "30px",
       }}

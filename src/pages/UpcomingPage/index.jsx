@@ -45,7 +45,7 @@ const UpcomingPage = () => {
         </Breadcrumb.Item>
         <Breadcrumb.Item isActive>Upcoming</Breadcrumb.Item>
       </Breadcrumb>
-      <TypographyTitle textAlign="center">Upcoming Movies</TypographyTitle>
+      <TypographyTitle>Upcoming Movies</TypographyTitle>
       <InfiniteScrollComponent
         dataLength={movies.length}
         next={fetchMore}

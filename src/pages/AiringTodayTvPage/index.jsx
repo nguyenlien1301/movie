@@ -1,4 +1,3 @@
-import { Box, Container } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,8 +12,6 @@ import { CARD_ITEM_TYPE, TYPE_PAGE } from "../../constants/general";
 import useDebounce from "../../hooks/useDebounce";
 import ArrayFromComponent from "../../components/ArrayFromComponent";
 import TypographyTitle from "../../components/TypographyTitle";
-import IntroMovies from "../../components/IntroMovies";
-import movieSlice from "../../utils/movieSlice";
 import Breadcrumb from "../../components/Breadcrumb";
 import { Link } from "react-router-dom";
 import PATHS from "../../constants/path";
@@ -47,9 +44,7 @@ const AiringTodayTvPage = () => {
         </Breadcrumb.Item>
         <Breadcrumb.Item isActive>Airing Today TV Series</Breadcrumb.Item>
       </Breadcrumb>
-      <TypographyTitle textAlign="center">
-        Airing Today TV Series
-      </TypographyTitle>
+      <TypographyTitle>Airing Today TV Series</TypographyTitle>
       <InfiniteScrollComponent
         dataLength={tvLists.length}
         next={fetchMore}

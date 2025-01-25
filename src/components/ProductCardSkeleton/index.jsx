@@ -12,9 +12,7 @@ export const ProductSkeletonStyle = styled.div`
 const ProductCardSkeleton = (props) => {
   return (
     <ProductSkeletonStyle {...props}>
-      <Skeleton.Image active style={{ width: "100%", height: 275 }} />
-      <Skeleton.Input />
-      <Skeleton.Input block />
+      <Skeleton.Image active style={{ width: "100%", height: 200 }} />
     </ProductSkeletonStyle>
   );
 };

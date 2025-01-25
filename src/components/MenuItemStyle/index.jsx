@@ -4,7 +4,6 @@ export const MENU_ITEM_STYLES = {
   fontWeight: "bold",
   padding: { tabletSm: "23px 5px" },
   margin: 0,
-  cursor: "pointer",
   "&:hover ul": {
     opacity: 1,
     visibility: "visible", // Hiển thị menu con khi hover vào nút
@@ -36,6 +35,7 @@ export const MENU_ITEM_STYLES = {
     paddingLeft: 0,
     minWidth: "200px",
     transition: "all 0.3s",
+    cursor: "pointer",
     li: {
       listStyleType: "none",
     },

@@ -24,7 +24,7 @@ const PopularTvSection = () => {
   return (
     <ContainerComponent>
       <MovieTitleItem link={PATHS.TV_SERIES.POPULAR}>
-        Popular TV Series
+        Popular tv series
       </MovieTitleItem>
       <Box mt="15px">
         {loading ? (

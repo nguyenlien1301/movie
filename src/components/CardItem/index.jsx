@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid2";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Card, ImageList, ImageListItem, Typography } from "@mui/material";
 import StarIcon from "@mui/icons-material/Star";
 import getImageUrl from "../../utils/imageUrl";
 import { formatDate, removeVietnameseTones } from "../../utils/format";
@@ -13,11 +13,8 @@ import { CARD_ITEM_TYPE } from "../../constants/general";
 
 const CardItem = ({
   id,
-  backdrop_path,
+  poster_path,
   title,
-  release_date,
-  overview,
-  vote_average,
   name,
   type = CARD_ITEM_TYPE.movies,
 }) => {
@@ -27,204 +24,143 @@ const CardItem = ({
   const tvPathId = PATHS.TV_SERIES_DETAIL.INDEX + `/${id}/${tvSlug}`;
   if (type === CARD_ITEM_TYPE.movies) {
     return (
-      backdrop_path &&
-      overview && (
+      poster_path && (
         <Grid
           item
           size={{
-            desktopSm: 2.4,
-            tabletSm: 4,
-            mobileLg: 6,
-            mobileXs: 12,
-            mediumDevice: 4,
-            smallDevice: 6,
-            largeDevice: 3,
+            mobileXs: 6,
+            mobileSm: 4,
+            mobileXl: 3,
+            mobileLg: 4,
+            tabletSm: 2.4,
+            desktopXs: 2,
           }}
         >
-          <Card
-            sx={{ display: "flex", flexDirection: "column", height: "100%" }}
-          >
-            <CardActionArea
-              component={Link}
-              to={moviePathId}
+          <Box>
+            <ImageList
               sx={{
-                flex: 1,
+                display: "block",
+                transition: "0.2s",
+                border: "2px solid transparent",
+                overflow: "hidden",
+                cursor: "pointer",
+                ":hover": {
+                  border: (theme) =>
+                    `2px solid ${theme.borderColorCustom.border}`,
+                },
+                ":hover .MuiImageListItem-root": {
+                  transform: "scale(1.05)",
+                },
               }}
             >
-              <CardMedia
-                component="img"
-                height="100%"
-                image={getImageUrl(backdrop_path || "")}
-                alt="poster"
-              />
-            </CardActionArea>
-            <CardContent
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                flex: 2,
-                p: "10px",
-                ":last-child": { pb: "15px" },
-              }}
-            >
-              <Typography
+              <ImageListItem
                 component={Link}
                 to={moviePathId}
-                variant="h6"
-                title={title || ""}
                 sx={{
-                  display: "-webkit-box",
-                  overflow: "hidden",
-                  WebkitLineClamp: 1, // số dòng
-                  WebkitBoxOrient: "vertical",
-                  textOverflow: "ellipsis",
-                  fontSize: { mobileLg: "16px" },
-                  cursor: "pointer",
-                  transition: "0.2s",
-                  mb: "10px",
-                  color: (theme) => theme.palette.common,
-                  bgcolor: "transparent",
-                  textDecoration: "none",
-                  "&:hover": { color: "#cf8e19" },
+                  transition: "transform 0.4s ease",
+                  borderRadius: "inherit",
                 }}
               >
-                {title || name}
-              </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  mb: "5px",
-                  mt: "auto",
-                  fontSize: "14px",
-                }}
-              >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  {" "}
-                  <StarIcon />
-                  {vote_average}
-                </Box>
-                <Box>{formatDate(release_date)}</Box>
-              </Box>
+                <img
+                  src={`${getImageUrl(
+                    poster_path || ""
+                  )}?w=164&h=164&fit=crop&auto=format`}
+                  srcSet={`${getImageUrl(
+                    poster_path || ""
+                  )}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                  alt="poster"
+                  loading="lazy"
+                  height="100%"
+                />
+              </ImageListItem>
+            </ImageList>
+            <Link to={moviePathId} style={{ textDecoration: "none" }}>
               <Typography
-                variant="p"
                 sx={{
-                  display: "-webkit-box",
-                  overflow: "hidden",
-                  WebkitLineClamp: 3, // số dòng
-                  WebkitBoxOrient: "vertical",
-                  textOverflow: "ellipsis",
-                  fontSize: "15px",
+                  fontSize: { mobileXs: "1.5rem", tabletXs: "1.8rem" },
+                  color: "var(--white)",
+                  transition: "var(--transtion)",
+                  ":hover": {
+                    color: "#fcb941",
+                  },
                 }}
               >
-                {overview || ""}
+                {title || ""}
               </Typography>
-            </CardContent>
-          </Card>
+            </Link>
+          </Box>
         </Grid>
       )
     );
   }
 
   return (
-    backdrop_path &&
-    overview && (
+    poster_path && (
       <Grid
         item
         size={{
-          desktopSm: 2.4,
-          tabletSm: 4,
-          mobileLg: 6,
-          mobileXs: 12,
-          mediumDevice: 4,
-          smallDevice: 6,
-          largeDevice: 3,
+          mobileXs: 6,
+          mobileSm: 4,
+          mobileXl: 3,
+          mobileLg: 4,
+          tabletSm: 2.4,
+          desktopXs: 2,
         }}
       >
-        {backdrop_path && (
-          <Card
-            sx={{ display: "flex", flexDirection: "column", height: "100%" }}
+        <Box>
+          <ImageList
+            sx={{
+              display: "block",
+              transition: "0.2s",
+              border: "2px solid transparent",
+              borderRadius: "15px",
+              overflow: "hidden",
+              cursor: "pointer",
+              ":hover": {
+                border: (theme) =>
+                  `2px solid ${theme.borderColorCustom.border}`,
+              },
+              ":hover .MuiImageListItem-root": {
+                transform: "scale(1.05)",
+              },
+            }}
           >
-            <CardActionArea
+            <ImageListItem
               component={Link}
               to={tvPathId}
               sx={{
-                flex: 1,
+                transition: "transform 0.4s ease",
+                borderRadius: "inherit",
               }}
             >
-              <CardMedia
-                component="img"
-                height="100%"
-                image={getImageUrl(backdrop_path || "")}
+              <img
+                src={`${getImageUrl(
+                  poster_path || ""
+                )}?w=164&h=164&fit=crop&auto=format`}
+                srcSet={`${getImageUrl(
+                  poster_path || ""
+                )}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
                 alt="poster"
+                loading="lazy"
+                height="100%"
               />
-            </CardActionArea>
-            <CardContent
+            </ImageListItem>
+          </ImageList>
+          <Link to={tvPathId} style={{ textDecoration: "none" }}>
+            <Typography
               sx={{
-                display: "flex",
-                flexDirection: "column",
-                flex: 2,
-                p: "10px",
-                ":last-child": { pb: "15px" },
+                fontSize: "1.8rem",
+                color: "var(--white)",
+                transition: "var(--transtion)",
+                ":hover": {
+                  color: "#fcb941",
+                },
               }}
             >
-              <Typography
-                component={Link}
-                to={tvPathId}
-                variant="h6"
-                title={title || ""}
-                sx={{
-                  display: "-webkit-box",
-                  overflow: "hidden",
-                  WebkitLineClamp: 1, // số dòng
-                  WebkitBoxOrient: "vertical",
-                  textOverflow: "ellipsis",
-                  fontSize: { mobileLg: "16px" },
-                  cursor: "pointer",
-                  transition: "0.2s",
-                  mb: "10px",
-                  color: (theme) => theme.palette.common,
-                  bgcolor: "transparent",
-                  textDecoration: "none",
-                  "&:hover": { color: "#cf8e19" },
-                }}
-              >
-                {title || name}
-              </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  mb: "5px",
-                  mt: "auto",
-                  fontSize: "14px",
-                }}
-              >
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  {" "}
-                  <StarIcon />
-                  {vote_average}
-                </Box>
-                <Box>{formatDate(release_date)}</Box>
-              </Box>
-              <Typography
-                variant="p"
-                sx={{
-                  display: "-webkit-box",
-                  overflow: "hidden",
-                  WebkitLineClamp: 3, // số dòng
-                  WebkitBoxOrient: "vertical",
-                  textOverflow: "ellipsis",
-                  fontSize: "15px",
-                }}
-              >
-                {overview || ""}
-              </Typography>
-            </CardContent>
-          </Card>
-        )}
+              {name || ""}
+            </Typography>
+          </Link>
+        </Box>
       </Grid>
     )
   );

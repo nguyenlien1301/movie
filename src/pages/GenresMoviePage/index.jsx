@@ -13,7 +13,7 @@ const GenresMoviePage = () => {
   return (
     <Box
       sx={{
-        pt: (theme) => `calc(${theme.header.heightHeader} + var(--pt))`,
+        pt: "var(--h-header)",
       }}
     >
       <Container maxWidth="xl">

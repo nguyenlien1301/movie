@@ -6,7 +6,13 @@ const TypographyTitle = ({ children, ...rest }) => {
     <Typography
       component="h2"
       variant="h2"
-      sx={{ fontSize: "var(--fz-h2)", fontWeight: "bold" }}
+      sx={{
+        fontSize: "var(--fz-h2)",
+        fontWeight: "bold",
+        pb: "10px",
+        borderBottom: "1.5px solid #ffffff93",
+        textTransform: "uppercase",
+      }}
       {...rest}
     >
       {children}

@@ -2,15 +2,13 @@ import React, { useState } from "react";
 
 const useMutation = (promise) => {
   const [data, setData] = useState();
-  const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
-  const execute = async (paload) => {
+  const [error, setError] = useState();
+  const execute = async (payload) => {
     try {
       setLoading(true);
-      const res = await promise(paload);
-      if (res?.data) {
-        setData(res.data);
-      }
+      const res = await promise(payload);
+      setData(res.data || []);
     } catch (error) {
       setError(error);
     } finally {
@@ -20,8 +18,8 @@ const useMutation = (promise) => {
   return {
     execute,
     data,
-    error,
     loading,
+    error,
   };
 };
 
