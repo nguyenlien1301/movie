@@ -1,7 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import ArrayFromComponent from "../../components/ArrayFromComponent";
 import ProductCardSkeleton from "../../components/ProductCardSkeleton";
 import CardPosterItem from "../../components/CardPosterItem";
 import { CARD_ITEM_TYPE } from "../../constants/general";
@@ -16,9 +15,26 @@ const MoviesList = ({ movies, isLoading, isError }) => {
   if (isLoading) {
     return (
       <Box>
-        <Box>
-          <ArrayFromComponent />
-        </Box>
+        <Grid container spacing={2}>
+          {new Array(10).fill("").map((_, index) => {
+            return (
+              <Grid
+                key={index}
+                item
+                size={{
+                  mobileXs: 6,
+                  mobileSm: 4,
+                  tabletSm: 3,
+                  mobileXl: 4,
+                  mobileLg: 6,
+                  largeDevice: 2.4,
+                }}
+              >
+                <ProductCardSkeleton />
+              </Grid>
+            );
+          })}
+        </Grid>
       </Box>
     );
   }

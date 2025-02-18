@@ -30,7 +30,7 @@ const useGenreMoviesTvPage = () => {
     discoverService.getDiscoverTvSeries(query || `?limit=${PRODUCT_LIMITS}`)
   );
   const movies = moviesData?.results || [];
-  const moviesListLoading = useDebounce(moviesLoading, 5000);
+  const moviesListLoading = useDebounce(moviesLoading, 1000);
 
   useEffect(() => {
     fetchMovies(search);

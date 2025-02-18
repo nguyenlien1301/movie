@@ -1,7 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import ArrayFromComponent from "../../components/ArrayFromComponent";
 import ProductCardSkeleton from "../../components/ProductCardSkeleton";
 import CardPosterItem from "../../components/CardPosterItem";
 const MoviesList = ({ movies, isLoading, isError }) => {

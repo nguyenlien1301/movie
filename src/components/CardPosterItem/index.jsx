@@ -23,57 +23,60 @@ const CardPosterItem = ({
   const mediaTypePath = media_type === "movie" ? moviePathId : tvPathId;
   if (type === CARD_ITEM_TYPE.movies) {
     return (
-      <Grid
-        item
-        size={{
-          mobileXs: 6,
-          mobileSm: 4,
-          tabletSm: 3,
-          mobileXl: 4,
-          mobileLg: 6,
-          largeDevice: 2.4,
-        }}
-        {...rest}
-      >
-        <ImageList
-          sx={{
-            display: "block",
-            transition: "0.2s",
-            border: "2px solid transparent",
-            borderRadius: "15px",
-            overflow: "hidden",
-            cursor: "pointer",
-            ":hover": {
-              border: (theme) => `2px solid ${theme.borderColorCustom.border}`,
-            },
-            ":hover .MuiImageListItem-root": {
-              transform: "scale(1.05)",
-            },
+      poster_path && (
+        <Grid
+          item
+          size={{
+            mobileXs: 6,
+            mobileSm: 4,
+            tabletSm: 3,
+            mobileXl: 4,
+            mobileLg: 6,
+            largeDevice: 2.4,
           }}
+          {...rest}
         >
-          <ImageListItem
-            component={Link}
-            // to={moviePathId}
-            to={media_type ? mediaTypePath : moviePathId}
+          <ImageList
             sx={{
-              transition: "transform 0.4s ease",
-              borderRadius: "inherit",
+              display: "block",
+              transition: "0.2s",
+              border: "2px solid transparent",
+              borderRadius: "15px",
+              overflow: "hidden",
+              cursor: "pointer",
+              ":hover": {
+                border: (theme) =>
+                  `2px solid ${theme.borderColorCustom.border}`,
+              },
+              ":hover .MuiImageListItem-root": {
+                transform: "scale(1.05)",
+              },
             }}
           >
-            <img
-              src={`${getImageUrl(
-                poster_path || ""
-              )}?w=164&h=164&fit=crop&auto=format`}
-              srcSet={`${getImageUrl(
-                poster_path || ""
-              )}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-              alt="poster"
-              loading="lazy"
-              height="100%"
-            />
-          </ImageListItem>
-        </ImageList>
-      </Grid>
+            <ImageListItem
+              component={Link}
+              // to={moviePathId}
+              to={media_type ? mediaTypePath : moviePathId}
+              sx={{
+                transition: "transform 0.4s ease",
+                borderRadius: "inherit",
+              }}
+            >
+              <img
+                src={`${getImageUrl(
+                  poster_path || ""
+                )}?w=164&h=164&fit=crop&auto=format`}
+                srcSet={`${getImageUrl(
+                  poster_path || ""
+                )}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                alt="poster"
+                loading="lazy"
+                height="100%"
+              />
+            </ImageListItem>
+          </ImageList>
+        </Grid>
+      )
     );
   }
   return (

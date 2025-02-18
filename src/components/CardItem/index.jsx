@@ -113,7 +113,6 @@ const CardItem = ({
               display: "block",
               transition: "0.2s",
               border: "2px solid transparent",
-              borderRadius: "15px",
               overflow: "hidden",
               cursor: "pointer",
               ":hover": {

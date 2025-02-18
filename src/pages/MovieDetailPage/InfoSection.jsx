@@ -73,7 +73,7 @@ const InfoSection = ({
             top: (theme) => theme.header.heightHeader,
             left: 0,
             width: "100%",
-            height: "100%",
+            height: "100vh",
             backgroundImage: `url(${backdropUrl})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
@@ -92,7 +92,7 @@ const InfoSection = ({
         </Breadcrumb>
         <Grid
           container
-          spacing={{ mobileXl: 2, tabletXs: 4 }}
+          spacing={{ mobileXl: 2, tabletXs: 5 }}
           sx={(theme) => ({
             mt: "20px",
             [theme.breakpoints.down("mobileXl")]: {
@@ -116,6 +116,7 @@ const InfoSection = ({
             {!loading ? (
               <Skeleton
                 variant="rectangular"
+                width={250}
                 height={350}
                 sx={{ borderRadius: "8px" }}
               />
@@ -127,7 +128,7 @@ const InfoSection = ({
               />
             )}
           </Grid>
-          <Grid size={8}>
+          <Grid size={9}>
             <Grid
               container
               spacing={2}
